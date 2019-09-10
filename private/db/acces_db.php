@@ -5,18 +5,18 @@
 
 // ZONE STRICTEMENT RESERVER ----***** MERCI DE NE PAS MODIFIER// TOUS DROIT RESERVER;
 //LISTE DES HOSTS
-
+/*
 define('HOST_DB',"mysql:host=185.98.131.91;dbname=vetec1105121");
 
 //USER ET MOT DE PASSE 
 define('HOST_USER',"vetec1105121");
 define('HOST_PASS',"0000001Le");
-/*
+
 // ZONE STRICTEMENT RESERVER ----***** MERCI DE NE PAS MODIFIER// TOUS DROIT RESERVER;
 //LISTE DES HOSTS
 
 $valhostdb=""; 
-
+*/
 define("HOST_DB","mysql:host=127.0.0.1;dbname=vetechdesign");
 //define("HOST_ADMIN","mysql:host=127.0.0.1;dbname=vetechdesign_admin");
 
@@ -24,7 +24,7 @@ define("HOST_DB","mysql:host=127.0.0.1;dbname=vetechdesign");
 //USER ET MOT DE PASSE 
 define("HOST_USER","root");
 define("HOST_PASS","");
-*/
+
 class HOST{
 	
 		//LISTE DES HOSTS

@@ -35,17 +35,80 @@ class f_af extends url {
 		 
 		 endif;
 		 
-			$panier = '<div class="col-sm-6  mb-3">
-			<div class="card  p-3">
-			<div class="shadow-sm bg-secondary p-3 mb-3  rounded text text-left  text-light" ><h4>Votre Panier  <span class="badge badge-pill badge-warning text text-danger "><i class="fas fa-cart-arrow-down fa-1x "></i> '. $_count.'</span></h4> </div>
-			<table class=" table table-hover shadow-sm rounded "> <tr>   <td class="table-success" colspan="6"> Formation: '.$N_FORMATION.' </td> </tr>
-			<tr>  <td class="table-secondary text text-dark"  colspan="6">Chapitre : '.$N_TITRE_CHAPITRE.' </td> </tr>
-			<tr>  <td colspan="2"> '.$DATE.' </td> <td> '.$H.':'.$M.' </td> <td> '.$N_HEUR.' H </td><td></td><td> '.number_format($MONTANT,0,","," ").' F CFA </d> </tr>
-			<tr>  <td colspan="5"> Montant H.T </td> <td> '.number_format($MONTANT,0,","," ").' F CFA</td> </tr>
-			<tr>  <td colspan="5"> T.V.A 18% </td><td>'.number_format($TVA,0,","," ").' F CFA</td> </tr>
-			<tr>  <td colspan="5"> Montant T.T.C </td><td>'.number_format($MONTANT_TTC,0,","," ").' F CFA</td> </tr>
-			</table>
-			</div></div>' ; 
+			$panier = '
+
+			<div class="col-sm-6  mb-3">
+				<div class="card  p-3">
+					<div class="shadow-sm bg-secondary p-3 mb-3  rounded text text-left  text-light" >
+						<h4>Votre Panier  
+							<span class="badge badge-pill badge-warning text text-danger ">
+								<i class="fas fa-cart-arrow-down fa-1x "></i> '. $_count.'
+							</span>
+						</h4> 
+					</div>
+
+					<div class="row m-0 table table-hover shadow-sm rounded ">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-12 table-success"> 
+									Formation: '.$N_FORMATION.'
+								</div> 
+							</div>
+							<div class="row border ">  
+								<div class="col-md-12 table-secondary text text-dark">
+									Chapitre : '.$N_TITRE_CHAPITRE.' 
+								</div> 
+							</div>
+							<div class="row mt-2 border">  
+								<div class="col-md-4">
+									'.$DATE.' 
+								</div>
+
+								<div class="col-md-2"> 
+								 	'.$H.':'.$M.' 
+								</div> 
+
+								<div class="col-md-2"> 
+								 	'.$N_HEUR.' H 
+								</div>
+
+								<div class="col-md-4"> 
+								 	'.number_format($MONTANT,0,","," ").' F CFA 
+								</div> 
+							</div>
+							<div class="row mt-2 border">  
+								<div class="col-md-8">
+									Montant H.T 
+								</div>
+
+								<div class="col-md-4"> 
+								 	'.number_format($MONTANT,0,","," ").' F CFA
+								</div> 
+							</div>
+
+							<div class="row mt-2 border">  
+								<div class="col-md-8">
+									T.V.A 18% 
+								</div>
+
+								<div class="col-md-4">
+									'.number_format($TVA,0,","," ").' F CFA
+								</div>
+							</div>
+
+							<div class="row mt-2 border ">  
+								<div class="col-md-8"> 
+									Montant T.T.C 
+								</div>
+								<div class="col-md-4">
+									'.number_format($MONTANT_TTC,0,","," ").' F CFA
+								</div> 
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>' ; 
 	
 	     return $panier; 
 		

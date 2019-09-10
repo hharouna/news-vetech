@@ -1,125 +1,124 @@
-@charset "utf-8";
-/* CSS Document */
-.container {
-        margin-top: 120px; 
-        
-        
-    }
-.card-body {
-        padding-top: 50px;
-        
-        
-    }
-
-
-/* Extra small devices (portrait phones, less than 576px)*/
-@media (max-width: 700px) { 
-    .col-8{
-       
-        padding: 5px;
-    }
-    .col-4{
-        width: auto;
-        padding: 5px;
-        display: contents;
-        margin: 10px;
-    }
-    p{
-        padding: 5px;
-        
-    }
-     h3{
-        padding: 5px;
-        
-    }
-    .row {
-       display: block;
-        grid-template-areas: 
-            "col-4 col-4"
-            "col-8 col-8"; 
-            
-        
-    }
-    .container {
-        margin-top: 150px;
-        
-        
-    }
-   
- 
-    .btn.btn-primary.mb-2{
-        
-        width: 100%;
-    }
-}
-
-/*Small devices (landscape phones, less than 768px)*/ 
-@media (max-width: 767.98px) { 
-
-     .btn.btn-primary.mb-2{
-        
-        width: 100%;
-    } 
-   
-   .row {
-       display: block;
-        grid-template-areas: 
-            "col-4 col-4"
-            "col-8 col-8"; 
-            
-        
-       
-    }
-    .col-4{
-        width: auto;
-        padding: 5px;
-        display: contents;
-        margin: 10px;
-    }
-  .container {
-        margin-top: 150px;
-        
-        
-    }
-   
-}
-
-/*Medium devices (tablets, less than 992px)*/ 
-
-@media (max-width: 991.98px) { 
-
-    .container {
-        margin-top: 150px;
-    
-    }
-   
- .btn.btn-primary.mb-2{
-        
-        width: 100%;
-    } 
-       .row {
-       display: block;
-        grid-template-areas: 
-            "col-4 col-4"
-            "col-8 col-8"; 
-            
-        
-    }
-    .col-4{
-        width: auto;
-        padding: 5px;
-        display: contents;
-        margin: 10px;
-    }
-}
 
 /* Large devices (desktops, less than 1200px)*/
-@media (max-width: 1199.98px) {
+@media screen and (min-width: 100px) and (max-width: 575px) {
 
-  .container {
-        margin-top: 150px;
-        
-        
-    }
-   
+     .logo_addr{
+    width: 250px;
+    height: auto;
+  }.text_reseau_cont p, .text_autre_cont p{
+    font-size: 1.4em;
+  }.dropdown-menu.show {
+  display: flex;
+  width: 90%;  
 }
+
+   
+
+}
+
+
+@media screen and (min-width: 576px) and (max-width: 670px) {
+
+  .container,.card-body, .card{
+        margin:  0px;
+        padding:  0px;  
+  }
+
+    .container{
+    margin: 0px;
+    padding:  0px;
+   
+  
+  }
+  .logo_addr{
+    width: 150px;
+    height: auto;
+  }.text_reseau{
+    font-size: 20px;
+  }
+  .text_autre{
+    font-size: 20px;
+  }
+
+  /* .text_autre_cont p{
+    font-size: 1.2em;
+    font-family: comic sans ms
+  } */
+   .body_dropdown{
+    width: 300px;
+   }.card-columns{
+    width: 800px;
+   }
+   .nav-vetechdesign li{
+    font-size: 1.3em;
+   }
+}
+
+
+ .dropdown-menu{
+    width: 780px;
+   }
+
+   .card-columns{
+    width: 400px;
+   }
+
+@media screen and (min-width: 671px) and (max-width: 910px) {
+    .logo_addr{
+    width: 140px;
+    height: auto;
+  }
+  .vetech_logo_addr{
+    margin: 0px;
+  }.text_reseau{
+    font-size: 20px;
+  }
+  .text_autre{
+    font-size: 20px;
+  }
+  .nav-vetechdesign li{
+    font-size: 1.3em;
+   }
+
+}
+@media screen and (min-width: 910px) and (max-width: 991px) {
+  .nav-vetechdesign li{
+    font-size: 1.5em;
+   }.dropdown-menu.show {
+  display: flex;
+  width: 250%;  
+}
+
+   /* .nav-vetechdesign img{
+    width: 80px;
+    height: auto;
+   } */
+}
+
+@media screen and (min-width: 992px) and (max-width: 1125px) {
+  .dropdown-menu.show {
+  display: flex;
+  width: 358%;  
+}.txt_drop{
+  font-size: 12px;
+  /* max-width: 100%;
+  word-break: break-all; */
+}
+}
+@media screen and (min-width: 1126px) and (max-width: 1925px) {
+    .logo_addr{
+    width: 200px;
+    height: auto;
+  }
+  .dropdown-menu.show {
+  display: flex;
+  width: 510%;  
+}.txt_drop{
+  font-size: 15px;
+  max-width: 100%;
+  word-wrap:break-word;
+}
+
+  
+}
+

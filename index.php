@@ -22,8 +22,9 @@ $_SESSION["token"]=$u_token;
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="google-site-verification" content="CWqBSmMKfZkf3q5cskFNiUp-ra7PkDhO2-70WKTnyrM" />
 <title> VETECH&DESIGN </title>
-<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap/css/bootstrap.css"/><link rel="stylesheet" type="text/css" href="fonts/css/fontawesome.css"/>
 <link  rel="stylesheet" type="text/css"  href="css/responsive.css"/> 
+<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome.css"/>
 
 <link rel="stylesheet" type="text/css" href="css/news_site.css"/>
     
@@ -77,12 +78,120 @@ window.smartsupp||(function(d) {
   src="https://www.facebook.com/tr?id=455441195053242&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Facebook Pixel Code -->	
+
+<style rel="stylesheet" type="text/css">
+
+.container {
+    margin-top: 200px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* .dropdown-menu.show {
+  display: flex;
+  width: 450%;  
+}
+ */
+
+.dropdown-menu{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: none;
+  float: left;
+  /* min-width: 10rem; */
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+.dropdown-menu[x-placement^="top"], .dropdown-menu[x-placement^="right"], .dropdown-menu[x-placement^="bottom"], .dropdown-menu[x-placement^="left"] {
+  right: auto;
+  bottom: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+
+}
+
+@media screen and (min-width: 100px) and (max-width: 991px) {
+.fixed-top{
+  position: relative;
+  /* width: 100%; */
+}
+.container-fluid{
+  width: 
+}
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    /* max-width: 720%; */
+    max-width: 100%;
+  }
+  .vetech_qsn{
+    /* font-size: 25px; */
+    width: 100%;
+    height: auto;
+  }
+  .vetech_cont_qsn{
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 200px;
+    padding: 0px;
+    left: 0;
+    /* height: 100px; */
+
+  }
+  .vetech_cont_qsn_border{
+    height: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    /* max-width: 960px; */
+    max-width: 100%;
+  }
+  
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+div{
+    /* border: 1px solid red; */
+}
+  
+</style>
 </head>
 
 <body>
 <div class="container">  
  
 
+
+
+
 </div>
+
+
 </body>
 </html>

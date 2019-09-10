@@ -44,7 +44,7 @@ class all_module_url extends url{
  
       $_contenu_calender= '<div class=" shadow bg-dark  p-3 mb-3  rounded">'; 
       $_contenu_calender.='<div class="shadow p-3 mb-3 bg-light text text-center  rounded "> <h4 class="text text-info ">Calendrier de toutes les formations </h4></div>';
-      $_contenu_calender.= '<div class="card-columns">';
+      $_contenu_calender.= '<div class="card-column row"><div class="col-md-12"><div class="row">';
       foreach($fetechall as $rs_calender =>$row_calander){
         $_v_url =$row_calander['n_formation'].
 			'.'.$row_calander['titre'].
@@ -57,7 +57,7 @@ class all_module_url extends url{
 			'.'.$row_calander['n_m'].
 			'.'.$row_calander['n_montant'];
 		$_contenu_calender.='
-		<div class="card shadow-sm p-3 mb-2 border-success " >
+		<div class="col-md-4 col-sm-6 col-xs-4 col-12"><div class="card shadow-sm p-3 mb-2 border-success ">
 		<div class="card-header shadow-sm rounded  bg-dark btext text-light text-center">Module : <strong>'.$row_calander['n_formation'].'</strong></div>
         
 		<div class="card-header bg-transparent border-success "><h6>Chapitre :   <strong class="text text-break ">'.ucfirst(strtolower($row_calander['titre'])).'</strong></h6></div>
@@ -71,10 +71,10 @@ class all_module_url extends url{
 		<div class="card-text text-danger">Coût : '.number_format($row_calander['n_montant'],0,',',' ').' F CFA HT </div>
 		
 		<div class="card-footer bg-transparent border-success"><a type="button" href="?url=participation&f_for='.$this->base64encode($_v_url).'" class="btn btn-success btn-block" >Participer</a></div>
-		</div>
+		</div></div>
 		';
           }
-       $_contenu_calender.= '</div></div>';
+       $_contenu_calender.= '</div></div></div></div>';
     return $_contenu_calender; 
         
                             } 
@@ -104,7 +104,7 @@ class all_module_url extends url{
     $connect_db->execute();
     $count_rs =$connect_db->rowCount();     
     $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC); 
-		$liste_sevice ="<div class='shadow p-3 mb-3  rounded'> <div class='shadow-sm bg-dark p-3 mb-3 rounded text text-light'><h3 > NOS SERVICES</h3> </div><marquee style='max-height: 350px; width:auto; '  direction='left' onmouseover='this.stop();' onmouseout='this.start();'> <div class='d-inline-flex  ' > "; 
+		$liste_sevice ="<div class='shadow p-3 mb-3  rounded'> <div class='shadow-sm bg-dark p-3 mb-3 rounded text text-light'><h3 > NOS SERVICES</h3> </div><marquee style='max-height: 350px; width: 100%; '  direction='left' onmouseover='this.stop();' onmouseout='this.start();'> <div class='d-inline-flex  ' > "; 
 		
 	foreach($fetechall as $rs_servive => $service)	{
 		$c_array=	$service['t_id_service'].'-'.$service['t_id'].'-'.$service["t_service"].'-'.$service["t_id_titre"];

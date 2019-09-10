@@ -26,7 +26,8 @@ $menu = new menu(); // class menu extends url
 $_all_module = new all_module_url(); 
 
 $liste_url = new liste_url(); // class liste url --> controle affiche liste page 
-$rs_connect = $u->u_connect($u_token, $session_info); // formulaire de connexion
+$rs_connect = $u->u_connect($u_token, $session_info).// formulaire de connexion
+	          $u->recherche($u_token, $session_info); // formulaire de recherche
 $rs_pied_p_p = $u->piedpage(); // pieds de page
 $rs_erro_page = $u->erro_page();// message Erreur si la page ne function pas 
 $_af_db= $u->liste_db; // liste des connexion aux basse de données

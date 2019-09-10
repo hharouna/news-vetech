@@ -61,7 +61,7 @@ class f_af extends url{
 		<div class="col-sm-5 mb-3 "> <div class="shadow-sm  rounded text text-light p-2 bg-secondary">
 
 
-		<address class="text text-center"><div class="shadow-sm  rounded  p-3 bg-light"><img src="imgformation/vetechdesign.png"> </div></address>
+		<address class="text text-center"><div class="shadow-sm  rounded  p-3 bg-light"><img src="imgformation/vetechdesign.png" class="logo_addr"> </div></address>
 		<hr>
 	    <p> <i class="fas fa-map-marker-alt fa-2x" > </i> Marcory derrière ORCA DECO cité Hibiscus</p>
 		<p><i class="fas fa-phone-square-alt fa-2x" > </i> (+225) 21 000 312 / 74 79 49 04 </p>
