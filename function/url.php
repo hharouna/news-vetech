@@ -94,13 +94,13 @@ public function connect_all($_token,$_session_info){
       </div>
       <div class="col-md-2 pl-0 ">
 
-			<button type="button" class="btn btn-success btn-block mb-2 p-1 connexion_all" token_vetech="'.$_token.'"> <i class="fas fa-sign-in-alt"></i> <span class="text-conn">Connexion</span></button>
+			<button type="button" class="btn btn-success btn-block  mb-2 p-1 connexion_all" token_vetech="'.$_token.'"> <i class="fas fa-sign-in-alt"></i> <span class="text-conn">Connexion</span></button>
       </div>
       <div class="col-md-2 pl-0 ">
 			<a href="?url=inscription" class="mb-2 p-1 btn btn-block btn-primary"> Inscription </a></div>
 			 <div class="alert-connect"> </div>
 
-      </div></form>';
+      </div></form> ';
     
   if(empty($_session_info)): 
 return $f_connet_client; 
@@ -115,7 +115,7 @@ return $f_connet_client;
     endif; 
     }
 	 
-public function recherche($_token,$_session_info){ 
+public function recherche($_token,$_session_info,$db, $_bass){ 
 $recherche = '<div class="maxwidth clearfix">
 		<form class="pure-form" action="/creer-une-annonce" method="post" id="xmod-recherche-form" accept-charset="UTF-8"><div><span class="search_block_title">Rerchercher <strong>une annonce</strong> :</span><div class="form-item form-type-textfield form-item-search">
  <input placeholder="Recherche..." type="text" id="edit-search" name="search" value="" size="60" maxlength="128" class="form-text">
@@ -125,12 +125,27 @@ $recherche = '<div class="maxwidth clearfix">
 <div class="form-item form-type-select form-item-lieu">
  <select id="edit-lieu" name="lieu" class="form-select"><option value="0">-- Région -- </option><option value="65">Abengourou</option><option value="57">Abidjan</option><option value="77">Adzopé</option><option value="69">Agboville</option><option value="88">Agnibilekrou</option><option value="94">Akoupé</option><option value="64">Anyama</option><option value="95">Assinie</option><option value="76">Bingerville</option><option value="79">Bondoukou</option><option value="96">Bonoua</option><option value="72">Bouaflé</option><option value="58">Bouaké</option><option value="87">Boundiali</option><option value="70">Dabou</option><option value="59">Daloa</option><option value="89">Daoukro</option><option value="82">Dimbokro</option><option value="62">Divo</option><option value="84">Duékoué</option><option value="81">Ferkessédougou</option><option value="67">Gagnoa</option><option value="71">Grand-Bassam</option><option value="86">Guiglo</option><option value="73">Issia</option><option value="75">Katiola</option><option value="63">Korhogo</option><option value="66">Man</option><option value="83">Odienné</option><option value="80">Oumé</option><option value="60">San Pédro</option><option value="78">Séguéla</option><option value="74">Sinfra</option><option value="68">Soubré</option><option value="92">Tiassalé</option><option value="85">Tingréla</option><option value="93">Toumodi</option><option value="90">Vavoua</option><option value="61">Yamoussoukro</option><option value="91">Zuénoula</option></select>
 </div>
-<div class="form-item form-type-select form-item-quartier form-disabled">
- <select disabled="disabled" id="edit-quartier" name="quartier" class="form-select"><option value="0">-- Quartier --</option></select>
+<div class=" float-left mr-1 mb-1">
+ <select id="edit-cat" name="cat" class="form-control"><option value="0">-- Catégorie --
+ </option>'.$_list_cathegorie.'</select></div>
+   <div class=" float-left mr-1 mb-1">
+ <select id="edit-lieu" name="lieu" class="form-control input-sm">
+ <option value="0">-- Région -- </option>'.$_list_region.'</select>
+
+    </div>
+
+<div class=" float-left mr-1 mb-1">
+
+ <select disabled="disabled" class="form-control input-sm mr-1" id="edit-quartier" name="quartier" class="form-select"><option value="0">-- Quartier --</option></select>
+   
 </div>
-<input type="submit" id="edit-submit" name="op" value="Rechercher" class="form-submit"><a href="/creer-une-annonce" class="pure-button pure-button-primary scrollbtnfade">Déposer une annonce</a><input type="hidden" name="form_build_id" value="form-xQaXeE_bZ6iY3-dsbW3zevbZzNOKgDKwEciD4mFsz5I">
+<div class=" float-left mr-1 mb-1">
+     <button  class=" btn btn-success "> <i class="fas fa-search fa-1x"> </i> Recherche</button>
+    </div><div class=" float-left mr-1 mb-1 ">
+     <input type="hidden" name="token" value="'.$_token.'">
 <input type="hidden" name="form_id" value="xmod_recherche_form">
-</div></form>	</div>	
+    </div>
+	</form></div>	</div>
 ';
 	
 	return $recherche;

@@ -7,14 +7,15 @@ define("formation","vetechdesign_formation");
 define("service","vetechdesign_service");
 define("client","vetechdesign_client");
 define("dessinateur","vetechdesign_dessinateur");
-
-
-/* Liste des DB	
+define("annonce","vetechdesign_annonce"); 
+/*
+ Liste des DB	
 define("admin","vetec1105121_1chrsf"); //
 define("formation","vetec1105121_4gqobd"); 
 define("service","vetec1105121_5q6pyj");
 define("client","vetec1105121_6z5zme");
-define("dessinateur","vetec1105121_10q5mtq");
+define("dessinateur","vetec1105121_10q5mtq"); 
+define("annonce","vetec1105121_11e9vrc");
   */
 //--> programmation vetechdesign by HAROUNA Harouna 
 
@@ -43,7 +44,8 @@ public $liste_db = array("admin"=>admin,
 						 "formation"=>formation,
 						 "service"=>service,
 						 "client"=>client,
-						 "dessinateur"=>dessinateur);
+						 "dessinateur"=>dessinateur,
+						 "annonce"=>annonce);
 	 
 	 
 

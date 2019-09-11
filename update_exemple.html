@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style> 
+	
+	
+	.bar {
+     hauteur : 18px ;
+    fond : vert;
+}
+	</style>
+<title>Document sans nom</title>
+	
+<script src="js/jquery.js" type="text/javascript"> </script>
+<script  src ="js/vendor/jquery.ui.widget.js " > </script>
+<script  src = " js/jquery.iframe-transport.js " > </script>
+<script  src = " js/jquery.fileupload.js " > </script>
+	
+	<script>
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                $('<p/>').text(file.name).appendTo(document.body);
+            });
+        }
+    });
+});
+	
+	$(document).ready(function(){
+		
+		
+		$('#fileupload').fileupload({
+		/* ... */
+		progressall: function (e, data) {
+		var progress = parseInt(data.loaded / data.total * 100, 10);
+		$('#progress .bar').css(
+		'width',
+		progress + '%'
+		);
+		}
+		});
+		
+	})
+</script>
+</head>
+
+<body>
+	
+	
+	<div  id = "fileupload" >
+    <div  class = " bar "  style = " width : 0 % ; " > </div>
+</div>
+	
+	<div  id = " progress " >
+    <div  class = " bar "  style = " width : 0 % ; " > </div>
+</div>
+</body>
+</html>
