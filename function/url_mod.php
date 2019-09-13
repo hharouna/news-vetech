@@ -1,77 +1,78 @@
 <?php 
 include_once("url_db.php"); 
 define('d', date('Y'))  ;  
-class url extends url_db{
+ class url extends url_db{
     
 public $array= array("cgu"=>"cgu","historique"=>"historique", "concept"=>"concept" ); 
 public function piedpage() {
             
 
 
-$pied_page='
+            $pied_page='
 
-<div class="zone_addr_reseau shadow p-2 mb-3 rounded bg-dark ">
+            
+                <div class="zone_addr_reseau shadow p-2 mb-3 rounded bg-dark ">
 
-<div class=" mb-2 card_addr_vetech">
-<div class="card p-1 mb-1">
+                <div class=" mb-2 card_addr_vetech">
+                  <div class="card p-1 mb-1">
 
-<div class="shadow-sm  rounded text text-light p-2 bg-secondary">
+                        <div class="shadow-sm  rounded text text-light p-2 bg-secondary">
 
-<address class="text text-center">
-<div class="shadow-sm  rounded  p-2 bg-light ">
-<img src="imgformation/vetechdesign.png"  class="logo_addr"> 
-</div>
-</address>
-<hr>
-<p> <i class="fas fa-map-marker-alt fa-1x"> </i> <span class="align-top">Marcory derrière ORCA DECO cité Hibiscus </span></p>
-<p><i class="fas fa-phone-square-alt fa-1x"> </i> <span class="align-top">(+225) 21 000 312 / 74 79 49 04</span> </p>
+                            <address class="text text-center">
+                                <div class="shadow-sm  rounded  p-2 bg-light ">
+                                    <img src="imgformation/vetechdesign.png"  class="logo_addr"> 
+                                </div>
+                            </address>
+                            <hr>
+                            <p> <i class="fas fa-map-marker-alt fa-1x"> </i> <span class="align-top">Marcory derrière ORCA DECO cité Hibiscus </span></p>
+                            <p><i class="fas fa-phone-square-alt fa-1x"> </i> <span class="align-top">(+225) 21 000 312 / 74 79 49 04</span> </p>
 
-<p > <i class="fas fa-at fa-1x" > </i> <span class="align-top"> contacts@vetechdesign.net</span></p>
-<hr>
-</div>
-</div>
-</div>
+                            <p > <i class="fas fa-at fa-1x" > </i> <span class="align-top"> contacts@vetechdesign.net</span></p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
 
-<div class=" mb-2 card_reseau_vetech">
-<div class="card p-1 mb-1 bg-secondary">
-<div class="shadow-sm  rounded text_reseau_cont p-2 bg-light">
-<h4 class="shadow-sm  rounded  p-3 mb-2 bg-secondary text text-center text-light text_reseau">
-<i class="fas fa-globe-americas fa-1x"></i> Réseaux sociaux
-</h4>
-<hr>
-<p class="vetech_fb"> <a href="https://web.facebook.com/vetechdesign/?ref=br_rs&_rdc=10&_rdr" target="_blank" class="text text-dark "><i class="fab fa-facebook-square fa-1x" > </i> <span class="align-top">Facebook</span>  </a></p>
-<p class="vetech_tw"> <a href="https://twitter.com/VetechD?s=03" target="_blank" class="text text-dark"><i class="fab fa-twitter-square fa-1x" > </i> <span class="align-top">Twitter </span> </a></p>
-<p class="vetech_ln"> <a href="" class="text text-dark" target="_blank"><i class="fab fa-linkedin fa-1x"> </i> <span class="align-top">LinkedIn </span></a></p>
-<p class="vetech_inst"> <a href="" class="text text-dark"><i class="fab fa-instagram fa-1x" target="_blank"> </i> <span class="align-top">Instagram</span> </a></p>
-<p class="vetech_what"> <a href="" class="text text-dark" target="_blank"><i class="fab fa-whatsapp-square fa-1x"> </i><span class="align-top"> Whatsapp </span> </a></p>
-<hr>
-</div>
-</div>
-</div>
+                <div class=" mb-2 card_reseau_vetech">
+                    <div class="card p-1 mb-1 bg-secondary">
+                        <div class="shadow-sm  rounded text_reseau_cont p-2 bg-light">
+                            <h4 class="shadow-sm  rounded  p-3 mb-2 bg-secondary text text-center text-light text_reseau">
+                                <i class="fas fa-globe-americas fa-1x"></i> Réseaux sociaux
+                            </h4>
+                            <hr>
+                            <p class="vetech_fb"> <a href="https://web.facebook.com/vetechdesign/?ref=br_rs&_rdc=10&_rdr" target="_blank" class="text text-dark "><i class="fab fa-facebook-square fa-1x" > </i> <span class="align-top">Facebook</span>  </a></p>
+                            <p class="vetech_tw"> <a href="https://twitter.com/VetechD?s=03" target="_blank" class="text text-dark"><i class="fab fa-twitter-square fa-1x" > </i> <span class="align-top">Twitter </span> </a></p>
+                            <p class="vetech_ln"> <a href="" class="text text-dark" target="_blank"><i class="fab fa-linkedin fa-1x"> </i> <span class="align-top">LinkedIn </span></a></p>
+                            <p class="vetech_inst"> <a href="" class="text text-dark"><i class="fab fa-instagram fa-1x" target="_blank"> </i> <span class="align-top">Instagram</span> </a></p>
+                            <p class="vetech_what"> <a href="" class="text text-dark" target="_blank"><i class="fab fa-whatsapp-square fa-1x"> </i><span class="align-top"> Whatsapp </span> </a></p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
 
-<div class=" mb-2 card_autre_vetech">
-<div class="card p-1 mb-1 bg-secondary">
-<div class="shadow-sm rounded text_autre_cont p-3 bg-light">
-<h4 class="shadow-sm  rounded  p-2 mb-2 bg-secondary text text-center text-light text_autre"> 
-<i class="fas fa-outdent fa-1x"></i> AUTRES 
-</h4>
-<hr>
-<p> <a href="?url=cgu&f_for='.$this->base64encode("historique").'" class="text text-dark "><i class="fas fa-history fa-1x" > </i> <span class="align-top">Historique </span>  </a></p>
-<p> <a href="?url=cgu&f_for='.$this->base64encode("concept").'" class="text text-dark"><i class="fas fa-info fa-1x" > </i> <span class="align-top "> Concept </span> </a></p>
-<p> <a href="?url=cgu&f_for='.$this->base64encode("cgu").'" class="text text-dark"><i class="fas fa-clipboard-check fa-1x" > </i> <span class="align-top">CGU</span> </a></p>
-<hr>
-</div>
-</div>
-</div>
+                <div class=" mb-2 card_autre_vetech">
+                    <div class="card p-1 mb-1 bg-secondary">
+                        <div class="shadow-sm rounded text_autre_cont p-3 bg-light">
+                            <h4 class="shadow-sm  rounded  p-2 mb-2 bg-secondary text text-center text-light text_autre"> 
+                                <i class="fas fa-outdent fa-1x"></i> AUTRES 
+                            </h4>
+                            <hr>
+                            <p> <a href="?url=cgu&f_for='.$this->base64encode("historique").'" class="text text-dark "><i class="fas fa-history fa-1x" > </i> <span class="align-top">Historique </span>  </a></p>
+                            <p> <a href="?url=cgu&f_for='.$this->base64encode("concept").'" class="text text-dark"><i class="fas fa-info fa-1x" > </i> <span class="align-top "> Concept </span> </a></p>
+                            <p> <a href="?url=cgu&f_for='.$this->base64encode("cgu").'" class="text text-dark"><i class="fas fa-clipboard-check fa-1x" > </i> <span class="align-top">CGU</span> </a></p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
 
-
-</div>
-<hr>
-<div class="shadow footer_vetech  rounded  p-3 bg-dark text text-light"><span class="text_footer">VETECH&DESIGN <i class="far fa-copyright fa-1x"></i> 2015-'.d.' </span>
-<div class="float-right footer_icon"> <i class="fas fa-desktop  fa-2x"></i>|<i class="fas fa-tablet-alt fa-2x"></i>|<i class="fas fa-mobile-alt fa-2x"></i></div>
-</div>
-</div>
-'; 
+            
+            </div>
+            <hr>
+        <div class="shadow footer_vetech  rounded  p-3 bg-dark text text-light"><span class="text_footer">VETECH&DESIGN <i class="far fa-copyright fa-1x"></i> 2015-'.d.' </span>
+            <div class="float-right footer_icon"> <i class="fas fa-desktop  fa-2x"></i>|<i class="fas fa-tablet-alt fa-2x"></i>|<i class="fas fa-mobile-alt fa-2x"></i></div>
+            </div>
+        </div>
+            '; 
             return $pied_page; 
     }
 public function connect_all($_token,$_session_info){ 
@@ -133,8 +134,6 @@ return $f_connet_client;
     return '<div class=" shadow p-3 mb-5 bg-light rounded"><div class="row"><h3 class="p-3 mb-3 text text-danger left"> Allez <i class="fas fa-walking fa-2x"></i> à votre compte</h3> <div > <a class="btn btn-secondary shadow-sm p-3 mb-3 " href="'.$this->connect_error.'"><i class="fas fa-door-open fa-3x   "></i> <p>Compte</p></a> </div><div > <button type="button" class="btn btn-warning shadow-sm mb-3 p-3 deconnect-all" ><i class="fas fa-door-closed fa-3x   "></i> <p>Déconnexion</p></button></div> </div></div>';
     endif; 
     }
-	 
- 
 public function url_vetechdesign($url_serveur, $url_host){
 
 if(isset($url_serveur)&& $url_host!=$url_serveur):

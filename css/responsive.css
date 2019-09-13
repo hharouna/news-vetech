@@ -1,12 +1,14 @@
+body{
+  font-family: 'Lobster', 'Georgia', 'PT Sans', 'Arvo', 'Times', 'Cabin', 'Helvetica', 'Arial', 'sans-serif', serif;
+}
 
-/* Large devices (desktops, less than 1200px)*/
 @media screen and (min-width: 100px) and (max-width: 575px) {
 
      .logo_addr{
     width: 250px;
     height: auto;
   }.text_reseau_cont p, .text_autre_cont p{
-    font-size: 1.4em;
+    font-size: 1.1em;
   }.dropdown-menu.show {
   display: flex;
   width: 90%;  
@@ -34,10 +36,10 @@
     width: 150px;
     height: auto;
   }.text_reseau{
-    font-size: 20px;
+    font-size: 13px;
   }
   .text_autre{
-    font-size: 20px;
+    font-size: 13px;
   }
 
   /* .text_autre_cont p{
@@ -122,3 +124,371 @@
   
 }
 
+
+.main-head {
+  grid-area: header;
+}.champs_email {
+  grid-area: champs_email;
+}.champs_mdp {
+  grid-area: champs_mdp;
+}.champs_check {
+  grid-area: champs_check;
+}.button_connex {
+  grid-area: button_connex;
+}.button_inscription {
+  grid-area: button_inscription;
+}.zone_alert {
+  grid-area: zone_alert;
+}
+
+.card_addr_vetech {
+  grid-area: card_addr_vetech;
+}.card_reseau_vetech {
+  grid-area: card_reseau_vetech;
+}
+.card_autre_vetech {
+  grid-area: card_autre_vetech;
+}
+
+
+.vetech_cont_qsn_n {
+  grid-area: vetech_cont_qsn_n;
+}
+.vetech_cont_qsn_n1 {
+  grid-area: vetech_cont_qsn_n1;
+}
+.vetech_cont_qsn_n2 {
+  grid-area: vetech_cont_qsn_n2;
+}
+.vetech_cont_qsn_n3 {
+  grid-area: vetech_cont_qsn_n3;
+}
+.vetech_what {
+  grid-area: vetech_what;
+}
+.vetech_tw {
+  grid-area: vetech_tw;
+}
+.text_reseau {
+  grid-area: text_reseau;
+}
+.vetech_ln {
+  grid-area: vetech_ln;
+}
+.vetech_inst {
+  grid-area: vetech_inst;
+}
+.vetech_fb {
+  grid-area: vetech_fb;
+}.text_footer {
+  grid-area: text_footer;
+}.footer_icon {
+  grid-area: footer_icon;
+}
+
+.titre_zone_formation {
+  grid-area: titre_zone_formation;
+}
+.chap_formation {
+  grid-area: chap_formation;
+}
+.content_formation {
+  grid-area: content_formation;
+}
+.card_module {
+  grid-area: card_module;
+}.titre_module {
+  grid-area: titre_module;
+}
+
+.vetech_cont_qsn{
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas: "vetech_cont_qsn_n vetech_cont_qsn_n1  vetech_cont_qsn_n2 vetech_cont_qsn_n3" 
+}
+.zone_connex {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 25% 27% 40px 17% 17% ;
+}
+.zone_addr_reseau {
+  display: grid;
+  grid-gap: 0 13px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "card_addr_vetech card_reseau_vetech card_autre_vetech "
+}
+.zone_formation{
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-areas: 
+      "titre_zone_formation titre_zone_formation"
+      "chap_formation content_formation"
+      
+}
+
+.zonne_calendrier_module{
+   display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+      "titre_module titre_module titre_module"
+      "card_module card_module card_module"
+   
+}
+
+
+
+@media (min-width: 100px) {
+  .card_addr_vetech, .text_reseau_cont, .text_autre_cont{
+    font-size: 20px;
+    font-family: 'Lobster', 'Georgia', 'Times', 'Cabin', 'Helvetica', 'Arial', 'sans-serif', serif;
+  }
+  .text_reseau_cont{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "text_reseau text_reseau"
+      "vetech_fb vetech_tw"
+      "vetech_ln vetech_inst"
+      "vetech_what .";
+  }
+  .vetech_cont_qsn{
+  grid-template-columns: 1fr;
+    grid-template-areas: 
+      "vetech_cont_qsn_n "
+      "vetech_cont_qsn_n1 "
+      "vetech_cont_qsn_n2"
+      "vetech_cont_qsn_n3 "
+}  
+
+.footer_vetech{
+  display: grid;
+  grid-template-columns: 1fr;
+    grid-template-areas: 
+      "text_footer "
+      "footer_icon "
+}
+.zone_formation{
+  display: grid;
+  padding: 0;
+  margin: 0px;
+  grid-gap: 20px 0px;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+      "titre_zone_formation"
+      "chap_formation"
+      "content_formation"
+}
+
+.card-body, .titre_zone_formation{
+  margin: 0;
+  padding: 0;
+}
+
+.zone_addr_reseau > .card_addr_vetech{
+  width: 100%;
+}
+.card_addr_vetech  {
+  /* width: 100%; */
+  /* margin-left: 15px;
+  margin-right: 15px; */
+
+}
+
+.logo_addr{
+  width: 100%;  
+}
+
+.zone_connex {
+  display: grid;
+  grid-gap: 0 50px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "champs_email "
+  "champs_mdp "
+  "champs_check "
+  "button_connex "
+  "button_inscription"
+  "zone_alert"
+}
+
+.zone_addr_reseau {
+  display: grid;
+  grid-gap: 10px 0px;
+  grid-template-columns: 1fr ;
+  grid-template-areas: 
+  "card_addr_vetech"
+  "card_autre_vetech"
+  "card_reseau_vetech"
+  
+
+}
+
+ 
+}
+
+
+
+@media (min-width: 500px) {
+
+  .vetech_cont_qsn{
+  grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "vetech_cont_qsn_n vetech_cont_qsn_n1 "
+      "vetech_cont_qsn_n3 vetech_cont_qsn_n2"
+}
+
+.zone_connex {
+  display: grid;
+  grid-gap: 0 5px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+  "champs_email "
+  "champs_mdp "
+  "champs_check "
+  "button_connex "
+  "button_inscription"
+  "zone_alert"
+}
+
+.zone_addr_reseau {
+  display: grid;
+  grid-gap: 0 13px;
+  grid-template-columns: 1fr ;
+  grid-template-areas: 
+  "card_addr_vetech"
+  "card_autre_vetech"
+  "card_reseau_vetech"
+  
+
+}.zone_formation{
+  display: grid;
+  padding: 0;
+  margin: 0px;
+  grid-gap: 20px 0px;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+      "titre_zone_formation"
+      "chap_formation"
+      "content_formation"
+}
+
+
+}
+ 
+
+@media (min-width: 700px)  {
+   .container{
+    display: grid;
+    grid-template-columns: 100%;
+    margin: 0px;
+    padding: 0px;
+   }
+
+   .vetech_cont_qsn{
+    grid-template-columns: 1.3fr 1.3fr 1.3fr 1.3fr;
+    grid-template-areas: 
+      "vetech_cont_qsn_n vetech_cont_qsn_n1 vetech_cont_qsn_n2 vetech_cont_qsn_n3"
+}
+
+.zone_connex {
+  display: grid;
+  grid-gap: 0 50px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "champs_email champs_mdp"
+  "champs_check champs_check"
+  "button_connex button_inscription"
+  "zone_alert zone_alert";
+}
+.zone_addr_reseau {
+  display: grid;
+  grid-gap: 0 13px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+  "card_addr_vetech card_addr_vetech  card_autre_vetech card_autre_vetech"
+  ". card_reseau_vetech card_reseau_vetech ."
+  
+
+}.text_reseau_cont{
+    /* display: grid; */
+    /* grid-gap: 10px; */
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "text_reseau"
+      "vetech_fb"
+      "vetech_tw"
+      "vetech_ln"
+      "vetech_inst"
+      "vetech_what";
+  }
+
+  .footer_vetech{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "text_footer footer_icon"
+     }
+
+
+  .zone_formation{
+  display: grid;
+  padding: 0;
+  margin: 0px;
+  grid-gap: 20px 0px;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas: 
+      "titre_zone_formation titre_zone_formation"
+      "chap_formation content_formation"
+}
+.chap_formation{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+   
+}
+
+
+@media (min-width: 991px)  {
+.zone_connex {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 25% 27% 40px 17% 17% ;
+  grid-template-areas:  
+  "champs_email champs_mdp champs_check button_connex button_inscription"
+  ;
+}
+.zone_addr_reseau {
+  display: grid;
+  grid-gap: 0 13px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  "card_addr_vetech card_reseau_vetech card_autre_vetech "
+}
+
+.footer_vetech{
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+    grid-template-areas: 
+      "text_footer footer_icon"
+     }
+
+.text_reseau_cont{
+    /* display: grid; */
+    grid-gap: 0px;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "text_reseau"
+      "vetech_fb "
+      "vetech_tw"
+      "vetech_ln "
+      "vetech_inst"
+      "vetech_what";
+  }
+
+}

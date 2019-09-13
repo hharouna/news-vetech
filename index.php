@@ -20,6 +20,7 @@ $_SESSION["token"]=$u_token;
 <head>
 <link rel="icon" type="image/png" id="favicon" href="imgformation/licone.png"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="CWqBSmMKfZkf3q5cskFNiUp-ra7PkDhO2-70WKTnyrM" />
 	<meta charset="utf-8" />
 <title> VETECH&DESIGN </title>

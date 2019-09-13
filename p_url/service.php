@@ -48,14 +48,14 @@ if($count_rs<=0){
     }
     else{
 	
-$_contenu_module= '<div class=" shadow p-3 mb-5 bg-light rounded">';
+$_contenu_module= '<div class=" shadow  p-3 mb-5 bg-light rounded">';
 $_contenu_module.= '<div class=" shadow-sm p-3 mb-5 bg-primary rounded"><h1 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h1></div>
-    <div class="card-columns">';
+    <div class="card-colum">';
  foreach($fetechall as $af_form => $rs_formation){
 			
 $_contenu_module.= '<div class="card border-default mb-3 shadow-sm p-1 " style="max-width: 18rem;">
   <div class="card-header bg-transparent border-default text text-dark text-center"><h4>'.$rs_formation["titre"].'</h4></div>
-  <div class="card-body text-dark">
+  <div class="card-body bord text-dark">
     <p class="card-text">'.$rs_formation["contenu"].'</p>
   </div>
   <div class="card-footer bg-transparent border-default"><button class="btn btn-success btn-sm btn-block" title="Prendre un rendez-vous">Prendre un rendez-vous</button></div>

@@ -54,12 +54,12 @@ class f_af extends url {
 									Formation: '.$N_FORMATION.'
 								</div> 
 							</div>
-							<div class="row border ">  
+							<div class="row  ">  
 								<div class="col-md-12 table-secondary text text-dark">
 									Chapitre : '.$N_TITRE_CHAPITRE.' 
 								</div> 
 							</div>
-							<div class="row mt-2 border">  
+							<div class="row mt-2 ">  
 								<div class="col-md-4">
 									'.$DATE.' 
 								</div>
@@ -76,7 +76,7 @@ class f_af extends url {
 								 	'.number_format($MONTANT,0,","," ").' F CFA 
 								</div> 
 							</div>
-							<div class="row mt-2 border">  
+							<div class="row mt-2 ">  
 								<div class="col-md-8">
 									Montant H.T 
 								</div>
@@ -86,7 +86,7 @@ class f_af extends url {
 								</div> 
 							</div>
 
-							<div class="row mt-2 border">  
+							<div class="row mt-2 ">  
 								<div class="col-md-8">
 									T.V.A 18% 
 								</div>
@@ -96,7 +96,7 @@ class f_af extends url {
 								</div>
 							</div>
 
-							<div class="row mt-2 border ">  
+							<div class="row mt-2  ">  
 								<div class="col-md-8"> 
 									Montant T.T.C 
 								</div>

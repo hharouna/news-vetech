@@ -15,16 +15,17 @@ $('body').scrollspy({ target: '#navbar-example' })
   $(this).scrollspy({ target: '#navbar-example' })
 })*/
     var f_utils = {
-		 spinner : "<div class='container'><img src='img_vetech/spinner.gif' class='spinner' /> </div>",
-         container: $( ".container" ),
-         alert_part:$( ".alert-participation"),
+		spinner : "<div class='container'><img src='img_vetech/spinner.gif' class='spinner' /> </div>",
+		container: $( ".container" ),
+		alert_part:$( ".alert-participation"),
 		alert_form_all:$( ".alert-form-all"),
-		 btn_spinner: '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>  Traitement...',
-         disabled: 'disabled', 
-        btn_success : "btn-success", 
-        btn_warning : "btn-warning",
-        btn_danger : "btn-danger",
-        traitement : "traitement",
+		btn_spinner: '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>  Traitement...',
+		disabled: 'disabled', 
+		btn_success : "btn-success", 
+		btn_warning : "btn-warning",
+		btn_danger : "btn-danger",
+		traitement : "traitement",
+		liste_r_q : ".region_q",
          f_sp_css: function(){
          var f_css = {"width": 200,"height": 200, "margin-top": 100,"margin-left":"auto","margin-right": "auto", "margin-bottom": "auto"}
              return f_css
@@ -177,12 +178,29 @@ $('body').scrollspy({ target: '#navbar-example' })
 		}
 
 		})
-		}
-		 
-		 
- } 
+		}, 
+		
+		__f_check_quart($this_btn,$_id_region,$_token){
+			$.ajax({ 
+		beforeSend: function(){
+		      //$this_btn.html(f_utils.btn_spinner)
+              //$this_btn.addClass(f_utils.disabled+' '+f_utils.traitement).
+             // removeClass("contact_all")
+		},	url: "p_register/controle_recheche.php",
+			type: 'POST', 
+			dataType:"json",
+            data:{control:"controle", id_r : $_id_region, token: $_token },
+			success: function(rs_region) {
+			if(rs_region["code"]==1){
+				if(rs_region['count']>=1){
+					$("select#edit-quartier").html(rs_region['liste'])
+				}else if(rs_region['count'] ==0){alert('aucun quartier disponible')}
+  			}	} }
+		)	 
+ } // fin de a function 	
 
-        
+  }
+      
        
     
         function $_GET(param) {
@@ -278,6 +296,15 @@ $('body').scrollspy({ target: '#navbar-example' })
         
             })
      	 	
+	   $(document).on("click","select#edit-lieu option",function(){
+          var $btn_this = $(this)
+		  var id_val = $btn_this.attr("id_liste_region")
+		  var token = $('input.token_recherche').val(); 
+		
+         f_function.__f_check_quart($btn_this,id_val,token);
+                   })
+     	 	
+	
 	
     $(document).on("keyup","input",function(){
         $( ".alert-participation").html('');

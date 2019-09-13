@@ -46,33 +46,57 @@ $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC);
 
 if($count_rs<=0){ 
     
-    $_contenu_module= '<div class=" shadow p-3 mb-3 bg-light rounded"><div class=" shadow-sm p-3 mb-5 bg-secondary rounded"><h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3></div>
-    <div class=" shadow-sm p-3 mb-3 bg-warning rounded"><h3 class="text text-white text-center"> Aucun  contenu disponible maintenant !!! </h3></div></div>';
-    return $_contenu_module;
-    }
-    else{
-	
-$_contenu_module= '<div class=" shadow p-3 mb-3 bg-light rounded">';
-$_contenu_module.= '<div class=" shadow-sm p-3 mb-3 bg-secondary rounded"><h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3></div>
-    
-<div class="row">
-<div class="col-4 ">
-<div id="list-example" class="list-group shadow-sm  ">';
- foreach($fetechall as $af_form => $rs_formation){
-			
-$_contenu_module.= '<a class="list-group-item border border-light list-group-item-action text text-info " href="#list-item-'.$rs_formation["idligne"].'">'.$rs_formation["titre"].'</a>';
-}
-$_contenu_module.= '</div></div>
-<div class="col-8 card border border-light shadow-sm  p-3 mb-3 overflow-auto bg-light" style="max-width: 695px; max-height: 600px;">
-<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">';
-	
-foreach($fetechall as $af_form => $rs_formation){
-$_contenu_module.= '<hr><h4 class="  text text-info text-center" id="list-item-'.$rs_formation["idligne"].'"> Chapitre : '.$rs_formation["titre"].'</h4>';
+    $_contenu_module= '
 
-$_contenu_module.= ' <hr><p>'.$rs_formation["contenu"].'</p>';
-	}
-$_contenu_module.='</div></div></div></div>';
-	
+
+<div class=" shadow p-3 mb-3 bg-light rounded">
+		<div class=" shadow-sm p-3 mb-5 bg-secondary rounded"><h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3></div>
+	    <div class=" shadow-sm p-3 mb-3 bg-warning rounded"><h3 class="text text-white text-center"> Aucun  contenu disponible maintenant !!! </h3></div></div>';
+	    return $_contenu_module;
+
+}else{
+		
+	$_contenu_module= '
+
+	<div class=" shadow p-3 mb-3 bg-light rounded zone_formation">';
+	$_contenu_module.= '
+		<div class=" shadow-sm p-3 mb-3 bg-secondary rounded titre_zone_formation">
+			<h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3>
+		</div>
+	    
+		
+			<div class="chap_formation">
+				<div id="list-example" class="list-group shadow-sm  ">';
+					foreach($fetechall as $af_form => $rs_formation){
+								
+					$_contenu_module.= '<a class="list-group-item border border-light list-group-item-action text text-info " href="#list-item-'.$rs_formation["idligne"].'">'.$rs_formation["titre"].'</a>';
+					}
+					$_contenu_module.= '
+				</div>
+			</div>
+
+			<div class="card border border-light shadow-sm content_formation  p-3 mb-3 overflow-auto bg-light" style="max-width: 695px; max-height: 600px;">
+				<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example">';
+			
+					foreach($fetechall as $af_form => $rs_formation){
+					$_contenu_module.= '
+					<hr>
+					<h4 class="text text-info text-center" id="list-item-'.$rs_formation["idligne"].'">
+						 Chapitre : '.$rs_formation["titre"].'
+					</h4>';
+
+					$_contenu_module.= '
+
+					 <hr>
+					 <p>'.$rs_formation["contenu"].'</p>';
+						}
+
+					$_contenu_module.='
+				</div>
+			</div>
+		
+</div>';
+				
 	//var_dump($fetechall); 
 	
 	return $_contenu_module; 
@@ -137,9 +161,17 @@ public function page($db,$_array_db,$_exploide,$__session_formation,$token){
         
         }else{
             
-			$_contenu_calender= '<div class=" shadow bg-secondary   p-3 mb-5  rounded">'; 
-			$_contenu_calender.='<div class="shadow p-3 mb-5 bg-light text text-center rounded "> <h4 class="text text-info ">Calendrier formation : '.$type_formation.'</h4></div>';
-			$_contenu_calender.= '<div class="card-columns">';
+			$_contenu_calender= '
+
+<div class=" shadow bg-secondary zonne_calendrier_module  p-3 mb-5  rounded">'; 
+			$_contenu_calender.='
+	<div class="shadow p-3 mb-5 bg-light text titre_module text-center rounded "> 
+		<h4 class="text text-info ">
+			Calendrier formation : '.$type_formation.'
+		</h4>
+	</div>';
+			$_contenu_calender.= '
+	<div class="card-colums  ">';
 			foreach($fetechall as $rs_calender =>$row_calander){
                 
 			$_v_url = $row_calander['n_formation'].
@@ -154,23 +186,33 @@ public function page($db,$_array_db,$_exploide,$__session_formation,$token){
 			'.'.$row_calander['n_montant'];
 			$_contenu_calender.='
             
-			<div class="card shadow p-3 mb-5 border-success mb-3" >
-			<div class="card-header bg-transparent border-success">'.$row_calander['titre'].'</div>
+		<div class="card shadow p-3 mb-5 card_module border-success mb-3" >
+			<div class="card-header bg-transparent border-success ">
+				'.$row_calander['titre'].'
+			</div>
+
 			<div class="card-body ">
-			<h5 class="card-title text text-center text-dark"> Information session </h5>
-			<p class="card-text text-info ">Durée: '.$row_calander['n_heure'].' H</p>
-			<p class="card-text text-info"> Date : '
-			.$row_calander['n_date'].
-			' | '.$row_calander['n_h']
-			.':'.$row_calander['n_m'].' 
-			</p>
-			<p class="card-text text-danger">Coût : '.number_format($row_calander['n_montant'],0,',',' ').' F cfa </p>
+				<h5 class="card-title text text-center text-dark"> Information session </h5>
+				<p class="card-text text-info ">Durée: '.$row_calander['n_heure'].' H</p>
+				<p class="card-text text-info"> Date : '
+					.$row_calander['n_date'].
+					' | '.$row_calander['n_h']
+					.':'.$row_calander['n_m'].' 
+				</p>
+				<p class="card-text text-danger">Coût : '.number_format($row_calander['n_montant'],0,',',' ').' F cfa </p>
 			</div>
-			<div class="card-footer bg-transparent border-success"><a type="button" href="?url=participation&f_for='.$this->base64encode($_v_url).' " class="btn btn-success btn-block" token="'.$__token.'" >Participer</a></div>
+
+			<div class="card-footer bg-transparent border-success">
+				<a type="button" href="?url=participation&f_for='.$this->base64encode($_v_url).' " class="btn btn-success btn-block" token="'.$__token.'" >
+					Participer
+				</a>
 			</div>
+		</div>
 			';
 			}
-			$_contenu_calender.= '</div></div>';
+			$_contenu_calender.= '
+	</div>
+</div>';
 			return $_contenu_calender; 
             
                 
