@@ -150,25 +150,25 @@ $_liste_region='';
 	}
 	$_liste_region.="";	
 $recherche= '<div class=" shadow p-3 mb-3 bg-light rounded ">  <div class="row">
-<form class="form-recherche" id="xmod-recherche-form" accept-charset="UTF-8"> <div class=" "><span class="ml-4 mb-2 mr-5"><i class="fas fa-search"> </i>  Rechercher <strong>une annonce</strong> :</span> <a href="?url=depot&f_for='.$this->base64encode($token).'" class="btn btn-danger btn-sm  mb-2 ">Déposer une annonce gratuite</a></div>
+<form class="form-recherche" id="form-recherche" accept-charset="UTF-8"> <div class=" "><span class="ml-4 mb-2 mr-5"><i class="fas fa-search"> </i>  Rechercher <strong>une annonce</strong> :</span> <a href="?url=depot&f_for='.$this->base64encode($token).'" class="btn btn-danger btn-sm  mb-2 ">Déposer une annonce gratuite</a></div>
 <div class=" col-3 mr-1 float-left mb-1">
-<input placeholder="Recherche..." type="text" id="edit-search" class="form-control" name="search" value="" size="60">
+<input placeholder="Recherche..." type="text" id="edit-search" class="form-control" name="recherche" value="" size="60">
 </div>
 <div class=" float-left mr-1 mb-1">
 <select id="edit-cat" name="cat" class="form-control">
 <option value="0">-- Catégorie -- </option>'.$_liste_cat.'</select></div>
 <div class=" float-left mr-1 mb-1">
-<select id="edit-lieu" name="lieu" class="form-control input-sm">
+<select id="edit-lieu" name="ville" class="form-control input-sm">
 <option value="0">-- Région -- </option>'.$_liste_region.'</select>
 </div>
 <div class=" float-left mr-1 mb-1">
 <select  class="form-control input-sm mr-1 disabled" id="edit-quartier" name="quartier"><option value="0">-- Quartier --</option></select>
 </div>
 <div class=" float-left mr-1 mb-1">
-<button class=" btn btn-success ">  <i class="fas fa-search fa-1x"> </i> Recherche</button>
+<button class=" btn btn-success btn-recherche-vetech" type="button">  <i class="fas fa-search fa-1x"> </i> Recherche</button>
 </div><div class=" float-left mr-1 mb-1 ">
 <input type="hidden" class="token_recherche" name="token" value="'.$token.'">
-<input type="hidden" name="form_id" value="xmod_recherche_form">
+<input type="hidden" class="token_recherche" name="form_recherche" value="form_recherche">
 </div>
 </form></div></div>'; 
 	return $recherche; 

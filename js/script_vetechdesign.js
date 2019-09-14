@@ -71,10 +71,12 @@ $('body').scrollspy({ target: '#navbar-example' })
     
         })
     }, 
+		
         input_rest_alert: function(){
              
              f_utils.alert_part.html('')
          }, 
+		
         connect_all: function(url,url_decoder,$this_btn){
             var form_connect_form = $( "form#form-inline" ).serialize();
             var token_vetech = $this_btn.attr('token')
@@ -104,6 +106,7 @@ $('body').scrollspy({ target: '#navbar-example' })
 
             })
             }, 
+		
 		connect_register_all_form: function(url,url_decoder,$this_btn){
 		var form_connect_form = $( "form#form_all_connect" ).serialize();
 		//var token_vetech = $this_btn.attr('token')
@@ -133,6 +136,7 @@ $('body').scrollspy({ target: '#navbar-example' })
 
 		})
 		},
+		
         deconnect_all_: function($this_btn){
 				$.ajax({ 
 		beforeSend: function(){
@@ -156,6 +160,7 @@ $('body').scrollspy({ target: '#navbar-example' })
 
 		})
 		},
+		
         contact_all: function($this_btn){
 		$.ajax({ 
 		beforeSend: function(){
@@ -182,27 +187,50 @@ $('body').scrollspy({ target: '#navbar-example' })
 		
 		__f_check_quart($this_btn,$_id_region,$_token){
 			$.ajax({ 
-		beforeSend: function(){
-		      //$this_btn.html(f_utils.btn_spinner)
-              //$this_btn.addClass(f_utils.disabled+' '+f_utils.traitement).
-             // removeClass("contact_all")
-		},	url: "p_register/controle_recheche.php",
+			beforeSend: function(){
+			//$this_btn.html(f_utils.btn_spinner)
+			//$this_btn.addClass(f_utils.disabled+' '+f_utils.traitement).
+			// removeClass("contact_all")
+			},	url: "p_register/controle_recheche.php",
 			type: 'POST', 
 			dataType:"json",
-            data:{control:"controle", id_r : $_id_region, token: $_token },
+			data:{control:"controle", id_r : $_id_region, token: $_token },
 			success: function(rs_region) {
 			if(rs_region["code"]==1){
-				if(rs_region['count']>=1){
-					$("select#edit-quartier").html(rs_region['liste'])
-				}else if(rs_region['count'] ==0){alert('aucun quartier disponible')}
-  			}	} }
+			if(rs_region['count']>=1){
+			$("select#edit-quartier").html(rs_region['liste'])
+			}else if(rs_region['count'] ==0){alert('aucun quartier disponible')}
+			}	} }
 		)	 
- } // fin de a function 	
+ } , 
+  
+		__f_resultat_recherche($this_btn,$_id_region,$_token){
+			var form_recherche = $( "form#form-recherche" ).serialize();
+			$.ajax({ 
+			beforeSend: function(){
+			//$this_btn.html(f_utils.btn_spinner)
+			//$this_btn.addClass(f_utils.disabled+' '+f_utils.traitement).
+			// removeClass("contact_all")
+			},	url: "p_register/controle_recheche.php",
+			type: 'POST', 
+			dataType:"json",
+			data:(form_recherche),
+			success: function(rs_region) {
+			if(rs_region["code"]==1){
+			if(rs_region['count']>=1){
+			$("select#edit-quartier").html(rs_region['liste'])
+			}else if(rs_region['count'] ==0){alert('aucun quartier disponible')}
+			}	} }
+		)	 
+ } 
+	
+	
+	
+	
+	}// fin de a function 	
 
-  }
-      
-       
-    
+
+	
         function $_GET(param) {
         var vars = {};
         window.location.href.replace( location.hash, '' ).replace( 
@@ -303,7 +331,11 @@ $('body').scrollspy({ target: '#navbar-example' })
 		
          f_function.__f_check_quart($btn_this,id_val,token);
                    })
-     	 	
+	
+     	  $(document).on("click","button.btn-recherche-vetech",function(){
+          var $btn_this = $(this)
+		 f_function.__f_resultat_recherche($btn_this);
+                   })	
 	
 	
     $(document).on("keyup","input",function(){
