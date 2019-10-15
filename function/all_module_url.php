@@ -57,7 +57,8 @@ $_v_url =$row_calander['n_formation'].
 '.'.$row_calander['n_m'].
 '.'.$row_calander['n_montant'];
 $_contenu_calender.='
-<div class="col-md-4 col-sm-6 col-xs-4 col-12"><div class="card shadow-sm p-3 mb-2 border-success ">
+<div class="col-md-4 col-sm-6 col-xs-4 col-12">
+<div class="card shadow-sm p-3 mb-2 border-success ">
 <div class="card-header shadow-sm rounded  bg-dark btext text-light text-center">Module : <strong>'.$row_calander['n_formation'].'</strong></div>
 
 <div class="card-header bg-transparent border-success "><h6>Chapitre :   <strong class="text text-break ">'.ucfirst(strtolower($row_calander['titre'])).'</strong></h6></div>
@@ -127,6 +128,91 @@ $liste_sevice .=" </div></marquee> </div>";
 
 return $liste_sevice; 
 }
+public  function image($id_annonce,$id_agent){
+        
+    /*controle image publier*/
+		 if(!file_exists('../annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce))){ 
+    //mkdir('../annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce)); 
+	return '<img src="../img/vetechdesign.png" class="card-img-top" alt="...">'; 
+			
+             }else{
+			 $_lien_dst='../annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce);
+			 
+    //$_lien_src= '../nav/'.$en_codeder_nav;//lien de recuperation de navigateur.
+        if(is_dir($_lien_dst)){
+        if(file_exists($_lien_dst)){
+        $_lien_scan =scandir($_lien_dst); 
+        $count_scan = count($_lien_scan); 
+   
+        foreach($_lien_scan as $scan)
+		{     
+			$_lien_affiche ='annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce);
+			return '<img src="'.$_lien_affiche.'/'.$scan.'" class="card-img-top" alt="...">'; 
+}
+		} } 
+    };
+    
+    }
+	
+public function annonce_module($___db,$__array_db){
+
+ $sql='SELECT 
+        '.$__array_db['annonce'].'.annonce_vetech.id_annonce as id_an,
+		'.$__array_db['annonce'].'.annonce_vetech.titre_annonce as a_titre,
+		'.$__array_db['annonce'].'.annonce_vetech.contenu_annonce as a_contenu,
+		'.$__array_db['annonce'].'.annonce_vetech.date_publication as a_date,
+		'.$__array_db['annonce'].'.annonce_vetech.prix as a_prix,
+		'.$__array_db['annonce'].'.annonce_vetech.surperficie as a_surface,
+        '.$__array_db['annonce'].'.info_agent.id_agent as id_ag,
+		'.$__array_db['annonce'].'.cathegorie.nom_cathegorie as a_cathegorie,
+		'.$__array_db['annonce'].'.cathegorie.numero_cat as a_contact,
+		'.$__array_db['annonce'].'.liste_cathegorie.liste_cat_nom as a_liste_cat,
+        '.$__array_db['annonce'].'.region.nom_region as a_region
+        FROM 
+        '.$__array_db['annonce'].'.annonce_vetech,
+        '.$__array_db['annonce'].'.cathegorie, 
+        '.$__array_db['annonce'].'.liste_cathegorie, 
+        '.$__array_db['annonce'].'.region, 
+        '.$__array_db['annonce'].'.region_quartier,
+        '.$__array_db['annonce'].'.info_agent
+        WHERE 
+		 '.$__array_db['annonce'].'.annonce_vetech.id_an_cat='.$__array_db['annonce'].'.cathegorie.id_cathegorie
+        AND
+		 '.$__array_db['annonce'].'.annonce_vetech.id_an_liste_cat='.$__array_db['annonce'].'.liste_cathegorie.id_liste_cat
+        AND
+		 '.$__array_db['annonce'].'.annonce_vetech.id_an_region='.$__array_db['annonce'].'.region.id_region
+        AND
+        '.$__array_db['annonce'].'.annonce_vetech.id_agent_vetech='.$__array_db['annonce'].'.info_agent.id_agent';
+
+$connect_db = $___db->prepare($sql);
+$connect_db->execute();
+$count_rs =$connect_db->rowCount();     
+$fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC); 
+$liste_sevice ="<div class='shadow p-3 mb-3  rounded'> <div class='shadow-sm bg-warning p-3 mb-3 rounded text text-light'><h3 > NOS ANNONCES</h3> </div><marquee style='max-height: 350px; width: 100%; '  direction='left' onmouseover='this.stop();' onmouseout='this.start();'> <div class='d-inline-flex  ' > "; 
+
+foreach($fetechall as $rs_servive => $annonce)	{
+$c_array=	$annonce['id_ag'].'-'.$annonce['id_an'].'-'.$annonce["a_cathegorie"].'-'.$annonce["a_titre"];
+$liste_sevice.= ' <div class="shadow-sm card   border-danger mb-1 m-1" style="max-width: 18rem;">
+  <div class="card-header text text-center shadow-sm "><strong>'.$annonce['a_cathegorie'].'</strong></div>';
+	$liste_sevice.= $this->image($annonce['id_an'],$annonce['id_ag']); 
+$liste_sevice.= '<div class=" p-2 text text-dark">
+<h6 class="card-title p-2 text text-center text-truncate text-danger">'.ucfirst(strtolower($annonce['a_liste_cat'])).'</h5>
+<div class="row services" style="max-width: 250px; max-height: 20px;">
+
+<div  style="max-width: 200px; max-height: 40px; width:auto; 
+overflow:hidden;
+white-space:nowrap;"> <h6 class=" p-2 mb-2  card-text text text-secondary text-truncate " > ' .$annonce['a_contenu'].'</h6></div></div>
+<a class="p-2 mb-2" href="?url=service_chapitre&f_for='.$this->base64encode($c_array).'">Lire...</a><hr><date class="text text-secondary">Publier : '.$annonce['a_date'].' </date>
+</div><div class="card-footer text text-warning">
+<a class="btn btn-warning btn-block border border-danger text text-danger" href="?url=client&f_for='.$this->base64encode($c_array).'"> Prendre un rendez-vous </a> </div> </div>
+';
+}
+
+
+$liste_sevice .=" </div></marquee> </div>"; 
+
+return $liste_sevice; 
+}
 public function recherche($token, $_session_info, $__db,$_nom_bass){
 	
 $sql_liste_cathegorie ='SELECT * FROM '.$_nom_bass['annonce'].'.cathegorie ';
@@ -136,7 +222,7 @@ $cat_fetechall =$cat_connect_db->fetchAll(PDO::FETCH_ASSOC);
 $_liste_cat =''; 
 	foreach($cat_fetechall as $rs_cat => $_cat){    
 	
-	$_liste_cat  .= '<option id_liste_cat="'.$this->base64encode($_cat['id_cathegorie']).'"></i> '.ucfirst(strtolower($_cat['nom_cathegorie'])).' </option> '; 
+	$_liste_cat  .= '<option id_liste_cat="'.$this->base64encode($_cat['id_cathegorie']).'" value="'.$this->base64encode($_cat['id_cathegorie']).'"></i> '.ucfirst(strtolower($_cat['nom_cathegorie'])).' </option> '; 
 	}
 	$_liste_cat .="";
 $sql_liste_region ='SELECT * FROM '.$_nom_bass['annonce'].'.region ';
@@ -146,33 +232,31 @@ $region_fetechall =$region_connect_db->fetchAll(PDO::FETCH_ASSOC);
 $_liste_region=''; 
 	foreach($region_fetechall as $rs_region => $_region){    
 	
-	$_liste_region.= '<option id_liste_region="'.$this->base64encode($_region['id_region']).'">'.ucfirst(strtolower($_region['nom_region'])).' </option> '; 
+	$_liste_region.= '<option id_liste_region="'.$this->base64encode($_region['id_region']).'" value="'.$this->base64encode($_region['id_region']).'">'.ucfirst(strtolower($_region['nom_region'])).' </option> '; 
 	}
 	$_liste_region.="";	
-$recherche= '<div class=" shadow p-3 mb-3 bg-light rounded ">  <div class="row">
-<form class="form-recherche" id="form-recherche" accept-charset="UTF-8"> <div class=" "><span class="ml-4 mb-2 mr-5"><i class="fas fa-search"> </i>  Rechercher <strong>une annonce</strong> :</span> <a href="?url=depot&f_for='.$this->base64encode($token).'" class="btn btn-danger btn-sm  mb-2 ">Déposer une annonce gratuite</a></div>
-<div class=" col-3 mr-1 float-left mb-1">
+$recherche= '<form class="form-recherche" id="form-recherche" accept-charset="UTF-8"> <div class=" shadow p-3 mb-3 bg-light rounded ">
+<div class="row mr-5 ml-5">
+<div class=" "><span class="ml-4 mb-2 mr-5"><i class="fas fa-search"> </i>  Rechercher <strong>une annonce</strong> :</span> <a href="?url=annonce_gratuite&f_for='.$this->base64encode($token).'" class="shadow-sm btn btn-danger btn-sm  mb-2 ">Déposer une annonce gratuite</a></div>
+<div class="col-md-auto p-1">
 <input placeholder="Recherche..." type="text" id="edit-search" class="form-control" name="recherche" value="" size="60">
 </div>
-<div class=" float-left mr-1 mb-1">
-<select id="edit-cat" name="cat" class="form-control">
-<option value="0">-- Catégorie -- </option>'.$_liste_cat.'</select></div>
-<div class=" float-left mr-1 mb-1">
-<select id="edit-lieu" name="ville" class="form-control input-sm">
-<option value="0">-- Région -- </option>'.$_liste_region.'</select>
-</div>
-<div class=" float-left mr-1 mb-1">
-<select  class="form-control input-sm mr-1 disabled" id="edit-quartier" name="quartier"><option value="0">-- Quartier --</option></select>
-</div>
-<div class=" float-left mr-1 mb-1">
-<button class=" btn btn-success btn-recherche-vetech" type="button">  <i class="fas fa-search fa-1x"> </i> Recherche</button>
-</div><div class=" float-left mr-1 mb-1 ">
+
+<div class="col-md-auto p-1 ">
+<button class="shadow-sm btn btn-success btn-recherche-vetech" type="button">  <i class="fas fa-search fa-1x"> </i> Recherche</button>
+
+</div><div class=" col-md-auto p-1 ">
+<button class="shadow-sm btn btn-primary btn-recherche-avancer" type="button">  <i class="fas fa-indent fa-1x"> </i> Recherche avancer</button>
+</div><div class=" col-md-auto p-1 ">
 <input type="hidden" class="token_recherche" name="token" value="'.$token.'">
 <input type="hidden" class="token_recherche" name="form_recherche" value="form_recherche">
 </div>
-</form></div></div>'; 
+
+</div><div class="r_avancer"></div></div></form>'; 
 	return $recherche; 
 }	
 
+
+	
 }
 ?>
