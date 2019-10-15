@@ -1,6 +1,17 @@
+#RewriteEngine On
+#RewriteCond %{HTTPS} !=on
+#RewriteCond %{HTTP_HOST} ^(?:www\.)?.app\.vetechdesign\.net(?:.*)$ [nc]
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [redirect=301,L]
+# Redirections https vetechdesign.net
+
 RewriteEngine On
-RewriteCond %{HTTPS} !=on
-RewriteCond %{HTTP_HOST} ^(?:www\.)?app.vetechdesign\.net(?:.*)$ [nc]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} !on
+RewriteCond %{HTTP_HOST} ^(?:formation\.)?vetechdesign\.net(?:.*)$ [nc]
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [redirect=301,L]
 
+# One month for most static assets
+#<filesMatch ".(css|jpg|jpeg|png|gif|js|ico)$">
+#Header set Cache-Control "max-age=2628000, public"
+#</filesMatch> 
 
