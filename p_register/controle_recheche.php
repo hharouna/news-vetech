@@ -10,14 +10,14 @@ $_session_start->session($u->session_site,$u->truefalse,$u->domaine_site); //ouv
 
 if(isset($token)&&$token==$_SESSION["token"] && isset($id_r)){
 	
-		$id_region =$u->base64decode($id_r); 
-		$id_region= preg_replace('#[^0-9]#i','',$id_region);
+		$id_r_cat =$u->base64decode($id_r); 
+		$id_r_cat= preg_replace('#[^0-9]#i','',$id_r_cat);
 	
-	if(isset($id_region)){
-	include_once("../p_register/f_quartier.php");// liste de la region 
+	if(isset($id_r_cat)){
+	include_once("../p_register/".$f_page.".php");// liste de la region 
 	$contenu = new f_af(); 
-	$r_l_quartier = $contenu->liste_quartier($db, $u->liste_db,$id_region,$u); /// liste des regions affiches 
-	$exploide =explode('/--/',$r_l_quartier);
+	$r_l_r_cat= $contenu->liste_quartier($db, $u->liste_db,$id_r_cat,$u); /// liste des regions affiches 
+	$exploide =explode('/--/',$r_l_r_cat);
 	$c =$exploide[0]; 
 	$d=	$exploide[1];
 	$array_retrun = array("code"=>"1","count"=>$c,"liste"=>$d); 

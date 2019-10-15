@@ -321,10 +321,7 @@ $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC);
 	return $_titre_chapitre; 
 }
 public function liste_formation($db,$nom_bass){
-	
-  
-    
-   
+
 $nav_formation = '
 
 <li class="nav-item dropdown nav-itm-border ">

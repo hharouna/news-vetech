@@ -8,11 +8,11 @@ $sessionsite=$u->session_site;
 $_truefalse=$u->truefalse;
 $_domaine_site=$u->domaine_site;
 $_session_start->session($u->session_site,$u->truefalse,$u->domaine_site); //ouverture de la session 
-$u_token = $u->__c_token(); 
+$u_token = $_SESSION["token"]; 
 /* liste de session */
 //unset($_SESSION["INFO_CONNECTER"]);
 
-$_SESSION["token"]=$u_token;
+//$_SESSION["token"]=$u_token;
 if(empty($_SESSION["INFO_CONNECTER"])):
     $session_info = "";
 else:  
@@ -53,6 +53,7 @@ $_f_for_url = null; //decoder base64code pour exploide
 endif; 
 
 //var_dump($_af_db); 
-echo $liste_url->liste($url_post,$_af_menu,$rs_connect,$_module_all,$rs_pied_p_p,$rs_erro_page,$_af_db,$db,$_f_for_url,$_session_formation,$u_token);
+ echo $liste_url->liste($url_post,$_af_menu,$rs_connect,$_module_all,$rs_pied_p_p,$rs_erro_page,$_af_db,$db,$_f_for_url,$_session_formation,$u_token);
+ 
 
 ?>

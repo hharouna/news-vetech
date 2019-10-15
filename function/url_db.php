@@ -1,13 +1,14 @@
 <?php 
 /* class Gestion des paramêtres de url */
-/*
-*/
+/**/
+
 define("admin","vetechdesign_admin"); 
 define("formation","vetechdesign_formation"); 
 define("service","vetechdesign_service");
 define("client","vetechdesign_client");
 define("dessinateur","vetechdesign_dessinateur");
 define("annonce","vetechdesign_annonce"); 
+define("nav_basse","vetechdesign_nav"); 
 /*
  Liste des DB	
 define("admin","vetec1105121_1chrsf"); //
@@ -16,6 +17,7 @@ define("service","vetec1105121_5q6pyj");
 define("client","vetec1105121_6z5zme");
 define("dessinateur","vetec1105121_10q5mtq"); 
 define("annonce","vetec1105121_11e9vrc");
+define("nav_basse","vetec1105121_11e9vrc"); 
   */
 //--> programmation vetechdesign by HAROUNA Harouna 
 
@@ -45,7 +47,8 @@ public $liste_db = array("admin"=>admin,
 						 "service"=>service,
 						 "client"=>client,
 						 "dessinateur"=>dessinateur,
-						 "annonce"=>annonce);
+						 "annonce"=>annonce,
+						 "nav"=>nav_basse);
 	 
 	 
 
