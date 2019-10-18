@@ -616,8 +616,12 @@ $(document).on("keyup","input",function(){
 	f_function.parametre_url(u,p,s); 
 	}
 
+	$(document).on("onmousemove",".hover-mousse", function() {
+    $(this).first().addClass("shadow")
+  })
 	
 
+		
 
 
 });

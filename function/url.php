@@ -5,8 +5,6 @@ class url extends url_db{
     
 public $array= array("cgu"=>"cgu","historique"=>"historique", "concept"=>"concept" ); 
 public function piedpage() {
-            
-
 
 $pied_page='
 
@@ -163,12 +161,12 @@ public function __c_verify_mdp($__mdp,$__mdp_info){
  }	
 	 
 public function __c_creation_mdp($_mdp){
-         
-         $key=$this->key_vetech; 
-         $hash =$key.$_mdp;
-         $_mdp_creat = password_hash($hash,PASSWORD_BCRYPT); 
-   
-         return $_mdp_creat; 
+
+ $key=$this->key_vetech; 
+ $hash =$key.$_mdp;
+ $_mdp_creat = password_hash($hash,PASSWORD_BCRYPT); 
+
+ return $_mdp_creat; 
  }	
 public function __c_token(){
   $__rest_token = md5(uniqid(rand())); 

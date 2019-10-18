@@ -153,7 +153,7 @@ public  function image($id_annonce,$id_agent){
 			if($scan == "." || $scan == "..")
 		continue;
 		$_image.='<div class="carousel-item active ">'; 
-		$_image.='<img  src="annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce).'/'.$scan.'"    class="img-thumbnail rounded">'; 
+		$_image.='<img  src="annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce).'/'.$scan.'"    class="img-thumbnail rounded" widht="185.333" height="185.333" >'; 
 		$_image.='</div>'; 
 		  
 
@@ -207,7 +207,7 @@ $liste_sevice ="<div class='shadow-sm p-2 mb-2  rounded'> <div class='shadow-sm 
 
 foreach($fetechall as $rs_servive => $annonce)	{
 $c_array=	$annonce['id_ag'].'-'.$annonce['id_an'].'-'.$annonce["a_cathegorie"].'-'.$annonce["a_titre"];
-$liste_sevice.= ' <a class="p-1 mb-1" href="?url=annonce&f_for='.$this->base64encode($annonce['id_an']).'"><div class="shadow-sm card   border-warning mb-1 m-1" style="max-width: 18rem;">
+$liste_sevice.= ' <a class="p-1 mb-1 hover-mousse" href="?url=annonce&f_for='.$this->base64encode($annonce['id_an']).'"><div class="shadow-sm card   border-warning mb-1 m-1" style="max-width: 18rem;">
   <div class="card-header text text-center shadow-sm "><strong>'.$annonce['a_cathegorie'].'</strong></div>';
 $liste_sevice.= $this->image($annonce['id_an'],$annonce['id_ag']); 
 $liste_sevice.= '<div class=" p-1 text text-dark">
@@ -215,10 +215,12 @@ $liste_sevice.= '<div class=" p-1 text text-dark">
 <div  style="max-width: 200px; max-height: 40px; width:auto; 
 overflow:hidden;
 white-space:nowrap;"> </div></div>
-<div class=""> <strong> Titre : '.$annonce['a_titre'].'</strong> </div>
+<div class="text text-info text-center"> <strong> '.$annonce['a_liste_cat'].' </strong> </div>
+<div class="text text-dark pr-1"> <strong> Ville : '.$annonce['a_region'].' </strong></div>
+<div class="text text-danger  pr-1"> <strong> Objet :  '.$annonce['a_titre'].' </strong></div>
 <date class="text text-secondary">Publier : '.$annonce['a_date'].' </date>
-</div><div class="card-footer text text-warning"></a>
-<a class="btn btn-warning btn-block border border-danger text text-danger" href="?url=client&f_for='.$this->base64encode($c_array).'"> Prendre un rendez-vous </a> </div> </div>
+</div>
+</div> </a>
 ';
 }
 
