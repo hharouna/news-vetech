@@ -57,7 +57,7 @@ class f_af{
     
     }
 	public function slider(){
-		$_slider ='<div class="shadow p-2  mb-3 rounded " >
+		$_slider ='<div class="shadow-sm p-2  mb-3 rounded " >
         <div id="carouselExampleInterval" class="carousel slide shadow-sm rounded " style="max-height: 280px; width:auto; " data-ride="carousel">
 		<div class="carousel-inner rounded">
 		<div class="carousel-item active" data-interval="1000">

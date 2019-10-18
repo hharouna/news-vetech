@@ -4,7 +4,7 @@ class form_all_connect extends url{
 	
 public function __identifiant_dessinateur($__db,$__array_db,$__exploide,$__session_value){
 
-	$_formuaire_id_des ='<div class=" shadow bg-dark  p-3 mb-3  rounded" > 
+	$_formuaire_id_des ='<div class=" shadow-sm bg-dark  p-3 mb-3  rounded" > 
 	<div class="row"> 
 	<div class="col-sm-6  mb-3">
 	<div class="card  p-3">
@@ -83,7 +83,7 @@ $_affiche_bup ='<div class="card mb-3 ">
 </div>
 </div>';
 
-	$_formuaire_all_client ='<div class=" shadow bg-secondary p-3 mb-3  rounded" > 
+	$_formuaire_all_client ='<div class=" shadow-sm bg-secondary p-3 mb-3  rounded" > 
 	<div class="row"> 
 	<div class="col-sm-7 mb-3">'.$_affiche_bup.'
 	</div>
@@ -142,7 +142,7 @@ public function form_demande_devis($__db,$array__db,$_explode,$_token){
 	</div>
 	</div>';
 
-	$_formuaire_all_client ='<div class=" shadow bg-secondary p-3 mb-3  rounded" > 
+	$_formuaire_all_client ='<div class=" shadow-sm bg-secondary p-3 mb-3  rounded" > 
 	<div class="row"> 
 	<div class="col-sm-7 mb-3">'.$_affiche_bup.'
 	</div>
@@ -227,7 +227,7 @@ $_formuaire_all_client.='
 	</div>
 	</div>';
 
-	$_formuaire_all_client ='<div class=" shadow bg-secondary p-3 mb-5  rounded" > 
+	$_formuaire_all_client ='<div class=" shadow-sm bg-secondary p-3 mb-5  rounded" > 
 	<div class="row"> 
 	<div class="col-sm-7 mb-3">'.$_affiche_bup.'
 	</div>

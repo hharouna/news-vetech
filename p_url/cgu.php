@@ -4,7 +4,7 @@ class f_af{
 
 public function cgu(){
 
-$cgu ="<div class='shadow mb-3 p-3 rounded'>
+$cgu ="<div class='shadow-sm mb-3 p-3 rounded'>
 <h3 class='shadow-sm bg-secondary text  text-light mb-3 p-3 text-center rounded'> <i class='fas fa-clipboard-check fa-2x' > </i> CONDITIONS GENERALES D’UTILISATION</h3>
 
 <h4>Bienvenue sur notre site.</h4> 
@@ -87,7 +87,7 @@ return $cgu;
 public function concept(){
      
      
-$concept = "<div class='shadow mb-3 p-3 rounded'> <h3 class='shadow-sm bg-secondary text  text-light mb-3 p-3 rounded text-center'>  <i class='fas fa-info fa-2x' > </i> CONCEPT</h3>
+$concept = "<div class='shadow-sm mb-3 p-3 rounded'> <h3 class='shadow-sm bg-secondary text  text-light mb-3 p-3 rounded text-center'>  <i class='fas fa-info fa-2x' > </i> CONCEPT</h3>
 
 <p>Original comme concept  plateforme d’échange et de mise en relation entre Dessinateurs – bureaux d’étude – techniciens – pour réaliser des prestations de qualité dans une recherche constante de la satisfaction du client.</p>
 
@@ -103,7 +103,7 @@ Le Bureau d’Études a aussi la responsabilité de garder nos personnels qualif
 public function historique(){
 
 
- $historique = " <div class='shadow mb-3 p-3 rounded'><h3 class='shadow-sm bg-secondary text  text-light mb-3 p-3 rounded text-center'><i class='fas fa-history fa-2x'> </i> HISTOIRE</h3>
+ $historique = " <div class='shadow-sm mb-3 p-3 rounded'><h3 class='shadow-sm bg-secondary text  text-light mb-3 p-3 rounded text-center'><i class='fas fa-history fa-2x'> </i> HISTOIRE</h3>
  
  <p>VETECH & DESIGN voit le jour  en 2015,  née d'une véritable passion pour la conception et la réalisation de projet immobiliers, mais aussi de la problématique qui se pose souvent en matière de choix des plans et de  la non satisfaction des clients.</p>
 

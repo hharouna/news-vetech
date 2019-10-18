@@ -24,17 +24,17 @@ public function __controle_image($nav, $_id_agent,$_id_annonce){
              }
     $_lien_dst='../annonce/'.$en_id_agent.'/'.$en_id_annonce;
     $_lien_src= '../nav/'.$en_codeder_nav;//lien de recuperation de navigateur.
-    if(is_dir($_lien_src)){
+        if(is_dir($_lien_src)){
         if(file_exists($_lien_src)){
         $_lien_scan =scandir('../nav/'.$en_codeder_nav); 
         $count_scan = count($_lien_scan); 
         if($count_scan>0){
-            foreach ($_lien_scan  as $_scan){
-            if($_scan != "." && $_scan != ".."){
-            copy($_lien_src. '/' .$_scan, $_lien_dst. '/' .$_scan); 
-            unlink($_lien_src. '/' .$_scan);
-            }
-                 
+        foreach ($_lien_scan  as $_scan){
+        if($_scan != "." && $_scan != ".."){
+        copy($_lien_src. '/' .$_scan, $_lien_dst. '/' .$_scan); 
+        unlink($_lien_src. '/' .$_scan);
+        }
+
         }
 
     }
@@ -59,10 +59,10 @@ public function __insert_annonce($__base,$___af_db,$d___exploide){
                             ":contenu_annonce"=>$__ex[8],
                             ":surperficie"=>$__ex[6],
                             ":prix"=>$__ex[5],
-                            ":id_an_cat"=>$__ex[1],
-                            ":id_an_liste_cat"=>$__ex[2],
-                            ":id_an_region"=>$__ex[3],
-                            ":id_an_region_quart"=>$__ex[4],
+                            ":id_an_cat"=>$this->base64decode($__ex[1]),
+                            ":id_an_liste_cat"=>$this->base64decode($__ex[2]),
+                            ":id_an_region"=>$this->base64decode($__ex[3]),
+                            ":id_an_region_quart"=>$this->base64decode($__ex[4]),
                             ":id_agent_vetech"=>$__ex[0],
                             ":n_nav"=>$__ex[9]
                            );
@@ -74,7 +74,6 @@ public function __insert_annonce($__base,$___af_db,$d___exploide){
         $last_insert= $__base->lastInsertId();
     //titre_annonce 	contenu_annonce 	surperficie 	prix 	id_an_cat 	id_an_liste_cat 	id_an_region 	id_an_region_quart 	id_agent_vetech 	n_nav 
        
-
         return $this->__controle_image($__ex[9],$__ex[0], $last_insert); 
        // $this->cssmail($contenumail,$pmail,$pform,$psujet,$ptitle,$piedpage, $pdonnearray, $commentmail); 
         
@@ -96,8 +95,8 @@ public function __insert_agent($_base,$__af_db,$d__exploide,$__nav){
         $last_id = $_base->lastInsertId();
   
  $__ex= $last_id.'/-/'.$_ex[4].'/-/'.$_ex[5].'/-/'.$_ex[6].'/-/'.$_ex[7].'/-/'.$_ex[8].'/-/'.$_ex[9].'/-/'.$_ex[10].'/-/'.$_ex[11].'/-/'.$__nav;// envois de donner en exploide 
-    $_lien_dst= '../annonce/'.$en_id_agent;
-     if(!file_exists('../annonce/'.$en_id_agent)){ 
+    $_lien_dst= '../annonce/'.$last_id;
+     if(!file_exists('../annonce/'.$last_id)){ 
     mkdir($_lien_dst);}
     return $this->__insert_annonce($_base,$__af_db,$__ex); 
     
@@ -106,6 +105,8 @@ public function __insert_agent($_base,$__af_db,$d__exploide,$__nav){
 public function __select_agent($base,$af_db,$dexploide,$_nav){
   //$nom_annonce.'/-/'.$prenom_annonce.'/-/'.$email_annonce.'/-/'.$contact_annonce.'/-/'.$cat.'/-/'.$type_cat.'/-/'.$ville.'/-/'.$quartier.'/-/'.$estime_annonce.'/-/'.$surface_annonce.'/-/'.$objet_annonce.'/-/'.$escription_annonce; 
     $ex = explode("/-/", $dexploide); 
+   
+    	
     //id_agent 	nom_agent 	prenom_agent 	mail_agent 	contact_agent 	date_register 
     $sqlselect= $base->prepare('SELECT * FROM '.$af_db['annonce'].'.info_agent
     WHERE '.$af_db['annonce'].'.info_agent.mail_agent=?' );
@@ -113,6 +114,10 @@ public function __select_agent($base,$af_db,$dexploide,$_nav){
     $count =$sqlselect->rowCount(); 
     $row = $sqlselect->fetch(); 
     $_ex= $row['id_agent'].'/-/'.$ex[4].'/-/'.$ex[5].'/-/'.$ex[6].'/-/'.$ex[7].'/-/'.$ex[8].'/-/'.$ex[9].'/-/'.$ex[10].'/-/'.$ex[11].'/-/'.$_nav;
+   
+    
+    
+    
     if($count>0){
      
     return $this->__insert_annonce($base,$af_db,$_ex); 

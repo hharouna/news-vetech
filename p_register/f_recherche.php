@@ -59,7 +59,7 @@ public function resultat_recherche(){
 	 
 	    $f_quatier="<option >-- Quartier --</option>";
 		foreach($result_quart as $rs_quart => $_qua){
-		$f_quatier.= "<option  id='".$_u->base64encode($_qua['id_quarier'])."' >".$_qua['com']."</option>"; 
+		$f_quatier.= "<option  id='".$_u->base64encode($_qua['id_quarier'])."'  value='".$_u->base64encode($_qua['id_quarier'])."' >".$_qua['nom_quartier']."</option>"; 
 		}
 		$f_quatier.=""; 
 		$table = $count_liste."/--/".$f_quatier; // return liste des regions

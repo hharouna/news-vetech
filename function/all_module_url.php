@@ -37,13 +37,13 @@ $count_rs = $connect_db->rowCount();
 $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC); 
 
 if($count_rs<=0){ 
-$_contenu_calender= '<div class=" shadow p-3 mb-3bg-light rounded">
+$_contenu_calender= '<div class=" shadow-sm p-3 mb-2 bg-light rounded">
 	<div class=" shadow-sm p-3 mb-3 bg-warning rounded"><h3 class="text text-white text-center"> Aucun  contenu disponible maintenant !!! </h3></div></div>';
 
 }else{
 
-$_contenu_calender= '<div class=" shadow bg-dark  p-3 mb-3  rounded">'; 
-$_contenu_calender.='<div class="shadow p-3 mb-3 bg-light text text-center  rounded "> <h4 class="text text-info ">Calendrier de toutes les formations </h4></div>';
+$_contenu_calender= '<div class=" shadow-sm bg-dark  p-3 mb-3  rounded">'; 
+$_contenu_calender.='<div class="shadow-sm p-3 mb-3 bg-light text text-center  rounded "> <h4 class="text text-info ">Calendrier de toutes les formations </h4></div>';
 $_contenu_calender.= '<div class="card-column row"><div class="col-md-12"><div class="row">';
 foreach($fetechall as $rs_calender =>$row_calander){
 $_v_url =$row_calander['n_formation'].
@@ -104,11 +104,11 @@ $connect_db = $___db->prepare($sql);
 $connect_db->execute();
 $count_rs =$connect_db->rowCount();     
 $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC); 
-$liste_sevice ="<div class='shadow p-3 mb-3  rounded'> <div class='shadow-sm bg-dark p-3 mb-3 rounded text text-light'><h3 > NOS SERVICES</h3> </div><marquee style='max-height: 350px; width: 100%; '  direction='left' onmouseover='this.stop();' onmouseout='this.start();'> <div class='d-inline-flex  ' > "; 
+$liste_sevice ="<div class='shadow-sm p-2 mb-2  rounded'> <div class='shadow-sm bg-dark p-2 mb-2 rounded text text-light'><h3 > NOS SERVICES </h3> </div><marquee style='max-height: 350px; width: 100%; '  direction='left' onmouseover='this.stop();' onmouseout='this.start();'> <div class='d-inline-flex  ' > "; 
 
 foreach($fetechall as $rs_servive => $service)	{
 $c_array=	$service['t_id_service'].'-'.$service['t_id'].'-'.$service["t_service"].'-'.$service["t_id_titre"];
-$liste_sevice.= ' <div class="shadow-sm card   border-danger mb-1 m-1" style="max-width: 18rem;">
+$liste_sevice.= ' <div class="shadow-sm card   border-dark mb-1 m-1" style="max-width: 18rem;">
 <div class="card-header text text-center shadow-sm "><strong>'.$service['t_service'].'</strong></div>
 <div class=" p-2 text text-dark">
 <h6 class="card-title p-2 text text-center text-truncate text-danger">'.ucfirst(strtolower($service['t_id_titre'])).'</h5>
@@ -119,7 +119,7 @@ overflow:hidden;
 white-space:nowrap;"> <h6 class=" p-2 mb-2  card-text text text-secondary text-truncate " > ' .$service['t_contenu'].'</h6></div></div>
 <a class="p-2 mb-2" href="?url=service_chapitre&f_for='.$this->base64encode($c_array).'">Lire...</a><hr><date class="text text-secondary">Publier : '.$service['t_date'].' </date>
 </div><div class="card-footer text text-warning">
-<a class="btn btn-warning btn-block border border-danger text text-danger" href="?url=client&f_for='.$this->base64encode($c_array).'"> Prendre un rendez-vous </a> </div> </div>
+<a class="btn btn-warning btn-block border border-dark text text-danger" href="?url=client&f_for='.$this->base64encode($c_array).'"> Prendre un rendez-vous </a> </div> </div>
 ';
 }
 
@@ -133,7 +133,8 @@ public  function image($id_annonce,$id_agent){
     /*controle image publier*/
 		 if(!file_exists('../annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce))){ 
     //mkdir('../annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce)); 
-	return '<img src="../img/vetechdesign.png" class="card-img-top" alt="...">'; 
+	
+	return '<img src="../img/vetechdesign.png" class="card-img-top" alt="Vetech design ">'; 
 			
              }else{
 			 $_lien_dst='../annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce);
@@ -143,13 +144,29 @@ public  function image($id_annonce,$id_agent){
         if(file_exists($_lien_dst)){
         $_lien_scan =scandir($_lien_dst); 
         $count_scan = count($_lien_scan); 
-   
-        foreach($_lien_scan as $scan)
-		{     
-			$_lien_affiche ='annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce);
-			return '<img src="'.$_lien_affiche.'/'.$scan.'" class="card-img-top" alt="...">'; 
-}
-		} } 
+       $_image ='<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">';
+		if($count_scan>0){
+        			
+		foreach($_lien_scan as $scan)
+		{  
+			if($scan == "." || $scan == "..")
+		continue;
+		$_image.='<div class="carousel-item active ">'; 
+		$_image.='<img  src="annonce/'.$this->base64encode($id_agent).'/'.$this->base64encode($id_annonce).'/'.$scan.'"    class="img-thumbnail rounded">'; 
+		$_image.='</div>'; 
+		  
+
+ 		}
+	$_image.="</div></div>";
+			return $_image; 
+		} 
+		}else{
+			 $_image .=""; '<img src="../img/vetechdesign.png" class="card-img-top" alt="Vetech design ">'; 
+			return  $_image; 
+		}
+		
+		} 
     };
     
     }
@@ -163,7 +180,8 @@ public function annonce_module($___db,$__array_db){
 		'.$__array_db['annonce'].'.annonce_vetech.date_publication as a_date,
 		'.$__array_db['annonce'].'.annonce_vetech.prix as a_prix,
 		'.$__array_db['annonce'].'.annonce_vetech.surperficie as a_surface,
-        '.$__array_db['annonce'].'.info_agent.id_agent as id_ag,
+		'.$__array_db['annonce'].'.annonce_vetech.surperficie as a_surface,
+        '.$__array_db['annonce'].'.annonce_vetech.id_agent_vetech as id_ag,
 		'.$__array_db['annonce'].'.cathegorie.nom_cathegorie as a_cathegorie,
 		'.$__array_db['annonce'].'.cathegorie.numero_cat as a_contact,
 		'.$__array_db['annonce'].'.liste_cathegorie.liste_cat_nom as a_liste_cat,
@@ -172,38 +190,34 @@ public function annonce_module($___db,$__array_db){
         '.$__array_db['annonce'].'.annonce_vetech,
         '.$__array_db['annonce'].'.cathegorie, 
         '.$__array_db['annonce'].'.liste_cathegorie, 
-        '.$__array_db['annonce'].'.region, 
-        '.$__array_db['annonce'].'.region_quartier,
-        '.$__array_db['annonce'].'.info_agent
-        WHERE 
+        '.$__array_db['annonce'].'.region
+         WHERE 
 		 '.$__array_db['annonce'].'.annonce_vetech.id_an_cat='.$__array_db['annonce'].'.cathegorie.id_cathegorie
         AND
 		 '.$__array_db['annonce'].'.annonce_vetech.id_an_liste_cat='.$__array_db['annonce'].'.liste_cathegorie.id_liste_cat
         AND
-		 '.$__array_db['annonce'].'.annonce_vetech.id_an_region='.$__array_db['annonce'].'.region.id_region
-        AND
-        '.$__array_db['annonce'].'.annonce_vetech.id_agent_vetech='.$__array_db['annonce'].'.info_agent.id_agent';
+		 '.$__array_db['annonce'].'.annonce_vetech.id_an_region='.$__array_db['annonce'].'.region.id_region';
 
 $connect_db = $___db->prepare($sql);
 $connect_db->execute();
 $count_rs =$connect_db->rowCount();     
 $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC); 
-$liste_sevice ="<div class='shadow p-3 mb-3  rounded'> <div class='shadow-sm bg-warning p-3 mb-3 rounded text text-light'><h3 > NOS ANNONCES</h3> </div><marquee style='max-height: 350px; width: 100%; '  direction='left' onmouseover='this.stop();' onmouseout='this.start();'> <div class='d-inline-flex  ' > "; 
+$liste_sevice ="<div class='shadow-sm p-2 mb-2  rounded'> <div class='shadow-sm bg-warning p-2 mb-1 rounded text text-light'>
+<h3 > NOS ANNONCES</h3> </div><marquee style='min-height: 350px; max-height: 500px; width: 100%; '  direction='left' onmouseover='this.stop();' onmouseout='this.start();'> <div class='d-inline-flex  ' > "; 
 
 foreach($fetechall as $rs_servive => $annonce)	{
 $c_array=	$annonce['id_ag'].'-'.$annonce['id_an'].'-'.$annonce["a_cathegorie"].'-'.$annonce["a_titre"];
-$liste_sevice.= ' <div class="shadow-sm card   border-danger mb-1 m-1" style="max-width: 18rem;">
+$liste_sevice.= ' <a class="p-1 mb-1" href="?url=annonce&f_for='.$this->base64encode($annonce['id_an']).'"><div class="shadow-sm card   border-warning mb-1 m-1" style="max-width: 18rem;">
   <div class="card-header text text-center shadow-sm "><strong>'.$annonce['a_cathegorie'].'</strong></div>';
-	$liste_sevice.= $this->image($annonce['id_an'],$annonce['id_ag']); 
-$liste_sevice.= '<div class=" p-2 text text-dark">
-<h6 class="card-title p-2 text text-center text-truncate text-danger">'.ucfirst(strtolower($annonce['a_liste_cat'])).'</h5>
+$liste_sevice.= $this->image($annonce['id_an'],$annonce['id_ag']); 
+$liste_sevice.= '<div class=" p-1 text text-dark">
 <div class="row services" style="max-width: 250px; max-height: 20px;">
-
 <div  style="max-width: 200px; max-height: 40px; width:auto; 
 overflow:hidden;
-white-space:nowrap;"> <h6 class=" p-2 mb-2  card-text text text-secondary text-truncate " > ' .$annonce['a_contenu'].'</h6></div></div>
-<a class="p-2 mb-2" href="?url=service_chapitre&f_for='.$this->base64encode($c_array).'">Lire...</a><hr><date class="text text-secondary">Publier : '.$annonce['a_date'].' </date>
-</div><div class="card-footer text text-warning">
+white-space:nowrap;"> </div></div>
+<div class=""> <strong> Titre : '.$annonce['a_titre'].'</strong> </div>
+<date class="text text-secondary">Publier : '.$annonce['a_date'].' </date>
+</div><div class="card-footer text text-warning"></a>
 <a class="btn btn-warning btn-block border border-danger text text-danger" href="?url=client&f_for='.$this->base64encode($c_array).'"> Prendre un rendez-vous </a> </div> </div>
 ';
 }
@@ -235,7 +249,7 @@ $_liste_region='';
 	$_liste_region.= '<option id_liste_region="'.$this->base64encode($_region['id_region']).'" value="'.$this->base64encode($_region['id_region']).'">'.ucfirst(strtolower($_region['nom_region'])).' </option> '; 
 	}
 	$_liste_region.="";	
-$recherche= '<form class="form-recherche" id="form-recherche" accept-charset="UTF-8"> <div class=" shadow p-3 mb-3 bg-light rounded ">
+$recherche= '<form class="form-recherche" id="form-recherche" accept-charset="UTF-8"> <div class=" shadow-sm p-2 mb-2 bg-light rounded ">
 <div class="row mr-5 ml-5">
 <div class=" "><span class="ml-4 mb-2 mr-5"><i class="fas fa-search"> </i>  Rechercher <strong>une annonce</strong> :</span> <a href="?url=annonce_gratuite&f_for='.$this->base64encode($token).'" class="shadow-sm btn btn-danger btn-sm  mb-2 ">Déposer une annonce gratuite</a></div>
 <div class="col-md-auto p-1">

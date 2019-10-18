@@ -4,7 +4,7 @@ require_once("../private/connexion.php");
 class f_af extends url{
 	 
 
-    public $f_af_image = '<div class=" shadow bg-dark   p-3 mb-3  rounded"><div class="row no-gutters bg-light position-relative">
+    public $f_af_image = '<div class=" shadow-sm bg-dark   p-3 mb-3  rounded"><div class="row no-gutters bg-light position-relative">
     <div class="col-md-6 mb-md-0 p-md-4">
     <img src="img_vetech/formation.jpg" class="w-100" alt="...">
     </div>
@@ -49,7 +49,7 @@ if($count_rs<=0){
     $_contenu_module= '
 
 
-<div class=" shadow p-3 mb-3 bg-light rounded">
+<div class=" shadow-sm p-3 mb-3 bg-light rounded">
 		<div class=" shadow-sm p-3 mb-5 bg-secondary rounded"><h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3></div>
 	    <div class=" shadow-sm p-3 mb-3 bg-warning rounded"><h3 class="text text-white text-center"> Aucun  contenu disponible maintenant !!! </h3></div></div>';
 	    return $_contenu_module;
@@ -58,7 +58,7 @@ if($count_rs<=0){
 		
 	$_contenu_module= '
 
-	<div class=" shadow p-3 mb-3 bg-light rounded zone_formation">';
+	<div class=" shadow-sm p-3 mb-3 bg-light rounded zone_formation">';
 	$_contenu_module.= '
 		<div class=" shadow-sm p-3 mb-3 bg-secondary rounded titre_zone_formation">
 			<h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3>
@@ -102,7 +102,7 @@ if($count_rs<=0){
 	return $_contenu_module; 
 }
 	else : 
-	return "<div class='shadow p-3 mb-3 bg-warning rounded  text text-center ' ><h4>Problème de connexion à cette page merci de réessayer !!! </h4> </div>"; 
+	return "<div class='shadow-sm p-3 mb-3 bg-warning rounded  text text-center ' ><h4>Problème de connexion à cette page merci de réessayer !!! </h4> </div>"; 
 	endif; 
 }
 
@@ -155,7 +155,7 @@ public function page($db,$_array_db,$_exploide,$__session_formation,$token){
     $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC); 
 
      if($count_rs<=0){   // valeur de ID
-      $_contenu_calender= '<div class=" shadow p-3 mb-5 bg-light rounded">
+      $_contenu_calender= '<div class=" shadow-sm p-3 mb-5 bg-light rounded">
         <div class=" shadow-sm p-3 mb-5 bg-secondary text-center rounded"><h3 class="text text-white "> Liste des chapitres:  '.$type_formation.'</h3></div>
         <div class=" shadow-sm p-3 mb-3 bg-warning rounded"><h3 class="text text-white text-center"> Aucun  contenu disponible maintenant !!! </h3></div></div>';
         
@@ -163,9 +163,9 @@ public function page($db,$_array_db,$_exploide,$__session_formation,$token){
             
 			$_contenu_calender= '
 
-<div class=" shadow bg-secondary zonne_calendrier_module  p-3 mb-5  rounded">'; 
+<div class=" shadow-sm bg-secondary zonne_calendrier_module  p-3 mb-5  rounded">'; 
 			$_contenu_calender.='
-	<div class="shadow p-3 mb-5 bg-light text titre_module text-center rounded "> 
+	<div class="shadow-sm p-3 mb-5 bg-light text titre_module text-center rounded "> 
 		<h4 class="text text-info ">
 			Calendrier formation : '.$type_formation.'
 		</h4>
@@ -186,7 +186,7 @@ public function page($db,$_array_db,$_exploide,$__session_formation,$token){
 			'.'.$row_calander['n_montant'];
 			$_contenu_calender.='
             
-		<div class="card shadow p-3 mb-5 card_module border-success mb-3" >
+		<div class="card shadow-sm p-3 mb-5 card_module border-success mb-3" >
 			<div class="card-header bg-transparent border-success ">
 				'.$row_calander['titre'].'
 			</div>
@@ -220,7 +220,7 @@ public function page($db,$_array_db,$_exploide,$__session_formation,$token){
             
 	
 		else : 
-	return "<div class='shadow p-3 mb-5 bg-warning rounded  text text-center ' ><h4>Problème de connexion à cette page merci de réessayer !!! </h4> </div>"; 
+	return "<div class='shadow-sm p-3 mb-5 bg-warning rounded  text text-center ' ><h4>Problème de connexion à cette page merci de réessayer !!! </h4> </div>"; 
 	endif; 
                             } 
 

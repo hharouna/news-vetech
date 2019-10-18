@@ -7,8 +7,8 @@ require_once('../function/form_all_connect.php');
 
 class f_af extends form_all_connect{
 	 
-	public $f_img = '<div class=" shadow bg-light  p-3 mb-3 rounded"> <img src="imgformation/vetechdesign.png" class="img-fluid img-thumbnail" alt="Responsive image"> </div>
-	<div class=" shadow bg-dark p-3 mb-3 rounded"> <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+	public $f_img = '<div class=" shadow-sm bg-light  p-3 mb-3 rounded"> <img src="imgformation/vetechdesign.png" class="img-fluid img-thumbnail" alt="Responsive image"> </div>
+	<div class=" shadow-sm bg-dark p-3 mb-3 rounded"> <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <img src="..." class="rounded mr-2" alt="...">
     <strong class="mr-auto">Bootstrap</strong>
@@ -24,7 +24,7 @@ class f_af extends form_all_connect{
 	
 	
 	
-	public $f_affiche = '<div class=" shadow bg-dark   p-3 mb-3  rounded"> 
+	public $f_affiche = '<div class=" shadow-sm bg-dark   p-3 mb-3  rounded"> 
 
 	<button type="button" class="btn btn-info shadow p-3 mb-3"  data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-folder-open fa-5x"></i></button>
 	<button type="button" class="btn btn-light shadow p-3 mb-3"  data-toggle="tooltip" data-placement="top" title="Tooltip on top" ><i class="fas fa-building fa-5x"></i></button>

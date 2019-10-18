@@ -14,7 +14,7 @@ class f_af extends url{
 		'.$__array_db['annonce'].'.annonce_vetech.surperficie as a_surface,
         '.$__array_db['annonce'].'.info_agent.id_agent as id_ag,
 		'.$__array_db['annonce'].'.cathegorie.nom_cathegorie as a_cathegorie,
-		'.$__array_db['annonce'].'.cathegorie.contact_vetech as a_contact,
+		'.$__array_db['annonce'].'.cathegorie.numero_cat as a_contact,
 		'.$__array_db['annonce'].'.liste_cathegorie.liste_cat_nom as a_liste_cat,
         '.$__array_db['annonce'].'.region.nom_region as a_region
         FROM 
@@ -27,11 +27,11 @@ class f_af extends url{
         WHERE 
         '.$__array_db['annonce'].'.annonce_vetech.id_annonce=? 
         AND
-		 '.$__array_db['annonce'].'.annonce_vetech.id_an_cat='.$__array_db['annonce'].'.cathegorie.nom_cathegorie
+		 '.$__array_db['annonce'].'.annonce_vetech.id_an_cat='.$__array_db['annonce'].'.cathegorie.id_cathegorie
         AND
 		 '.$__array_db['annonce'].'.annonce_vetech.id_an_liste_cat='.$__array_db['annonce'].'.liste_cathegorie.id_liste_cat
         AND
-		 '.$__array_db['annonce'].'.annonce_vetech.id_an_region='.$__array_db['annonce'].'.region.nom_region
+		 '.$__array_db['annonce'].'.annonce_vetech.id_an_region='.$__array_db['annonce'].'.region.id_region
         AND
         '.$__array_db['annonce'].'.annonce_vetech.id_agent_vetech='.$__array_db['annonce'].'.info_agent.id_agent';
         $connect_db = $___db->prepare($sql);
@@ -39,7 +39,7 @@ class f_af extends url{
         $count_rs = $connect_db->rowCount();     
         $fetechall =$connect_db->fetch();
    
-        $_contenu_module= '<div class=" shadow p-3 mb-2 bg-secondary rounded"> 
+        $_contenu_module= '<div class=" shadow-sm p-3 mb-2 bg-secondary rounded"> 
 		<div class=" shadow-sm p-2 mb-2 bg-light rounded"> 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -120,7 +120,7 @@ if($count_rs<=0){
     $_contenu_module= '
 
 
-<div class=" shadow p-3 mb-3 bg-light rounded">
+<div class=" shadow-sm p-3 mb-3 bg-light rounded">
 		<div class=" shadow-sm p-3 mb-5 bg-secondary rounded"><h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3></div>
 	    <div class=" shadow-sm p-3 mb-3 bg-warning rounded"><h3 class="text text-white text-center"> Aucun  contenu disponible maintenant !!! </h3></div></div>';
 	    return $_contenu_module;
@@ -129,7 +129,7 @@ if($count_rs<=0){
 		
 	$_contenu_module= '
 
-	<div class=" shadow p-3 mb-3 bg-light rounded zone_formation">';
+	<div class=" shadow-sm p-3 mb-3 bg-light rounded zone_formation">';
 	$_contenu_module.= '
 		<div class=" shadow-sm p-3 mb-3 bg-secondary rounded titre_zone_formation">
 			<h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3>
@@ -173,7 +173,7 @@ if($count_rs<=0){
 	return $_contenu_module; 
 }
 	else : 
-	return "<div class='shadow p-3 mb-3 bg-warning rounded  text text-center ' ><h4>Problème de connexion à cette page merci de réessayer !!! </h4> </div>"; 
+	return "<div class='shadow-sm p-3 mb-3 bg-warning rounded  text text-center ' ><h4>Problème de connexion à cette page merci de réessayer !!! </h4> </div>"; 
 	endif; 
     }
     public function page($db,$_array_db,$_exploide,$__session_formation,$token){

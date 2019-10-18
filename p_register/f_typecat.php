@@ -14,7 +14,7 @@ class f_af{
 	 
 	    $f_quatier="<option >--Type cathegorie --</option>";
 		foreach($result_quart as $rs_quart => $_qua){
-		$f_quatier.= "<option  id='".$_u->base64encode($_qua['id_liste_cat'])."' >".$_qua['id_liste_cat']."</option>"; 
+		$f_quatier.= "<option  id='".$_u->base64encode($_qua['id_liste_cat'])."' value='".$_u->base64encode($_qua['id_liste_cat'])."' >".$_qua['liste_cat_nom']."</option>"; 
 		}
 		$f_quatier.=""; 
 		$table = $count_liste."/--/".$f_quatier; // return liste des regions

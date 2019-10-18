@@ -6,7 +6,7 @@ HAROUNA
 haruna 
 recrutement@vetechdesign.net
 contacts@vetechdign.net*/
-$(function() {
+$(function(vetechdesign) {
 	//$('.list-group').scrollspy({ target: '#navbar-example' })
 //$('[data-toggle="tooltip"]').tooltip();
 //$('body').scrollspy({ target: '#navbar-example' })
@@ -14,9 +14,50 @@ $(function() {
  // var $spy = $(this).scrollspy('refresh')
   $(this).scrollspy({ target: '#navbar-example' })
 })*/
+    var recherche = {
+    
+        form_r:function formu($_liste_cat,$_liste_region){
+        var f =   '<hr ><h4 class="shadow-sm  bg-secondary text text-warning p-2 rounded m-1" > Recherche avancer </h4> <div class="row ml-5"><div class=" col-md-auto col-md-auto p-1  "><select id="edit-cat" name="cat" class="form-control shadow-sm">'+
+                '<option value="">-- Catégorie -- </option>'+$_liste_cat+'</select></div>'+
+                '<div class=" col-md-auto p-1"><select id="disabledSelect" name="cat" class="form-control shadow-sm edit-typcat">'+
+                '<option value="">--Type cathegorie -- </option></select></div>'+
+                '<div class=" col-md-auto p-1  "><select id="edit-lieu" name="ville" class="form-control shadow-sm input-sm">'+
+                '<option value="">-- Région -- </option>'+$_liste_region+'</select></div>'+
+                '<div class=" col-md-auto p-1 ">   <div class="form-group"> <select  class="form-control shadow-sm input-sm mr-1 edit-quartier" id="disabledSelect" name="quartier">'+
+                ' <option value="">-- Quartier --</option></select> </div></div><div class="col-md-auto p-1"><button class=" shadow-sm btn btn-success btn-recherche-vetech" type="button">  <i class="fas fa-search fa-1x"> </i> Recherche</button></div></div>'
+         return f; 
+                },
+        r: function r_avancer($this){
+         this.r_option($this); 
+        },
+        r_option: function __option($this__btn){
+        var $_token = $('#nav_token').attr('value')
+        $.ajax({ 
+            beforeSend: function(){
+			$( ".r_avancer" ).html(f_utils.btn_spinner)
+			
+			},
+       	url: "p_register/r_option.php",
+        type: 'POST', 
+        dataType:"json",
+        data:{control:"r_option", token: $_token},
+        success: function(rs) {
+        if(rs["code"]==0){
+           $this__btn.hide();  
+         $( ".r_avancer" ).html(recherche.form_r(rs['cat'],rs["region"]))
+        }else{
+            window.location.reload()}
+        }	}
+        )	 
+        } 
+    
+    }
+    
+    
     var f_utils = {
 		spinner : "<div class='container'><img src='img_vetech/spinner.gif' class='spinner' /> </div>",
 		container: $( ".container" ),
+        r_avancer: $( ".r_avancer" ),
         t_token : $("input#nav_token").val(),
         t_nav: $("input#nav").val(),
 		alert_part:$( ".alert-participation"),
@@ -45,14 +86,15 @@ $(function() {
     var f_function = {
         controle_nav: function(nav_token,nav){
            var self = this ; 
-           $.ajax({ 
+         return $.ajax({ 
 		    url: "url/controle_nav.php",
             type: 'POST', 
             dataType:"json", 
             data: {controle:"nav", token : nav_token, encodenav:nav},
             success: function(rs_nav){
                 if(rs_nav['count']==0){
-                  $('#bd-example-modal-lg').modal({"backdrop": true})
+                    
+                $('#bd-example-modal-lg').modal({"backdrop": false})
                 .addClass('mt-5 bg-transparent');
                 $('.modal-content').html(rs_nav["formulaire"]).addClass('mt-5 bg-transparent');
 
@@ -248,37 +290,42 @@ $(function() {
 		check_quatre: function __f_check_quart($this__btn,$_id_region,$_token){
 			$.ajax({ 
 			beforeSend: function(){
-			//$this__btn.html(f_utils.btn_spinner)
-			//$this__btn.addClass(f_utils.disabled+' '+f_utils.traitement).
-			// removeClass("contact_all")
+			$("select.edit-quartier").html(f_utils.btn_spinner)
+			
 			},	url: "p_register/controle_recheche.php",
 			type: 'POST', 
 			dataType:"json",
 			data:{control:"controle", id_r : $_id_region, token: $_token, f_page:"f_quartier" },
 			success: function(rs_region) {
-			if(rs_region["code"]==1){
-			if(rs_region['count']>=1){
-			$("select#edit-quartier").html(rs_region['liste'])
-			}else if(rs_region['count'] ==0){alert('aucun quartier disponible')}
-			}	} }
+			if(rs_region["code"]==1 && rs_region["count"]>0){
+			
+			$("select.edit-quartier").html(rs_region['liste']).attr("id","v")
+			}else{
+                
+                $("select.edit-quartier").html("<option value=''> --Vide-- </option>").attr("id","disabledSelect")
+            
+			}}	} 
 		)	 
  } , 	
 		check_cathegorie: function __f_check_type_cathegorie($this__btn,$_id_cathegorie,$_token){
 			$.ajax({ 
 			beforeSend: function(){
-			//$this__btn.html(f_utils.btn_spinner)
-			//$this__btn.addClass(f_utils.disabled+' '+f_utils.traitement).
-			// removeClass("contact_all")
+			$("select.edit-typcat").html(f_utils.btn_spinner)
 			},	url: "p_register/controle_recheche.php",
 			type: 'POST', 
 			dataType:"json",
 			data:{control:"controle", id_r : $_id_cathegorie, token: $_token, f_page:"f_typecat" },
 			success: function(rs_cathegorie) {
-			if(rs_cathegorie["code"]==1){
-			if(rs_cathegorie['count']>=1){
-			$("select#edit-typcat").html(rs_cathegorie['liste'])
-			}else if(rs_cathegorie['count']==0){alert('aucun quartier disponible')}
-			}	} }
+			if(rs_cathegorie["code"]==1 && rs_cathegorie["count"]>0){
+			
+			$("select.edit-typcat").html(rs_cathegorie['liste']).attr("id","v")
+                
+			}else{
+            $("select.edit-typcat").html("<option value=''> --vide-- </option>").attr("id","disabledSelect")
+            
+            }
+			}	} 
+                
 		)	 
  } , 
 		
@@ -289,7 +336,8 @@ $(function() {
 			//$this__btn.html(f_utils.btn_spinner)
 			//$this__btn.addClass(f_utils.disabled+' '+f_utils.traitement).
 			//removeClass("btn-annonce-confirm")
-			},	url: "p_register/controle_register_all_annonce.php",
+			},
+            url: "p_register/controle_register_all_annonce.php",
 			type: 'POST', 
 			dataType:"json",
 			data:(form_annonce),
@@ -323,7 +371,7 @@ $(function() {
 		)	 
  } ,
 		
-  		resultat_rechercher: function __f_resultat_recherche($this__btn,$_id_region,$_token){
+  		   resultat_rechercher: function __f_resultat_recherche($this__btn,$_id_region,$_token){
 			var form_recherche = $( "form#form-recherche" ).serialize();
 			$.ajax({ 
 			beforeSend: function(){
@@ -342,35 +390,8 @@ $(function() {
 			}	} }
 		)	 
             
- } 
-	
-	
-	
-	
-	}// fin de a function 	
-
-	
-        function $_GET(param) {
-        var vars = {};
-        window.location.href.replace( location.hash, '' ).replace( 
-        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
-        function( m, key, value ) { // callback
-        vars[key] = value !== undefined ? value : '';
-        }
-        );
-
-        if ( param ) {
-        return vars[param] ? vars[param] : null;	
-        }
-        return vars;
-        }
-    
-
-  
-// parametre get  function url --> page correspondant
-   
-    
- function controle_url(t_url,url_para,par_url){
+ } ,
+		   parametre_url :  function controle_url(t_url,url_para,par_url){
        
    
         $.ajax({ 
@@ -435,7 +456,36 @@ $(function() {
 
            
 })
-    }
+    },
+		   url_get :  function url_g(param) {
+        var vars = {};
+        window.location.href.replace( location.hash, '' ).replace( 
+        /[?&]+([^=&]+)=?([^&]*)?/gi, // regexp
+        function( m, key, value ) { // callback
+        vars[key] = value !== undefined ? value : '';
+        }
+        );
+
+        if ( param ) {
+        return vars[param] ? vars[param] : null;	
+        }
+        return vars;
+        }
+	
+	
+	
+	
+	}// fin de a function 	
+
+	
+       
+    
+
+  
+// parametre get  function url --> page correspondant
+   
+    
+ 
 
 
   
@@ -448,7 +498,7 @@ $(document).on("click","button.btn-register-part",function(){
         f_function.resisgter_part(para_url,para_decoder,$btn_this);
 
             })
-    $(document).on("click","button.btn-register-nav",function(){
+$(document).on("click","button.btn-register-nav",function(){
         var $btn_this = $(this)
         f_function. controle_nav_register($btn_this);
             })
@@ -484,20 +534,41 @@ $(document).on("click","button.deconnect-all",function(){
        
         
             })
-$(document).on("click","select#edit-lieu option",function(){
-var $btn_this = $(this)
-var id_val = $btn_this.attr("id_liste_region")
-var token = $('input.token_recherche').val(); 
+ 
+   
+			
+		
+ 
+$(document).on("change","select#edit-lieu",function(){
 
-f_function.check_quatre($btn_this,id_val,token);
+        var  id_val  ="";
+        var idselect ="";
+        $( "select#edit-lieu option:selected" ).each(function() {
+        idselect +=$(this).attr("value");
+           id_val += $(this).attr("id_liste_region")
+        //$('.choixform').attr('value',idselect)
+        });
+        var $btn_this = $(this)
+        var token = $("input#nav_token").attr('value')
+        //var token = $('input.token_recherche').val(); 
+
+        f_function.check_quatre($btn_this,idselect,token);
+    
    })   	 	
 
-$(document).on("click","select#edit-cat option",function(){
-          var $btn_this = $(this)
-		  var id_val = $btn_this.attr("id_liste_cat")
-		  var token = $('input.token_recherche').val(); 
-		
-         f_function.check_cathegorie($btn_this,id_val,token);
+$(document).on("change","select#edit-cat",function(){
+        var  id_val  = "";
+        var idselect = "";
+        $( "select#edit-cat option:selected" ).each(function() {
+        idselect += $(this).attr("value")+"";
+        id_val += $(this).attr("id_liste_cat")
+    
+        });
+    var $btn_this = $(this)
+    var token = $("input#nav_token").attr('value')
+
+    f_function.check_cathegorie($btn_this,idselect,token);
+
                    })
 $(document).on("click","button.btn-annonce-confirm",function(){
          var $btn_this = $(this)
@@ -513,7 +584,12 @@ $(document).on("click","button.btn-update-file",function(){
 $(document).on("click","button.btn-recherche-vetech",function(){
           var $btn_this = $(this)
 		 f_function.resultat_rechercher($btn_this);
-                   })	
+                   })
+    
+$(document).on("click","button.btn-recherche-avancer",function(){
+          var $btn_this = $(this)
+      recherche.r_option($btn_this); 
+})	
 $(document).on("keyup","input",function(){
         $( ".alert-participation").html('');
         $("button.btn-register-part").addClass(f_utils.btn_success).
@@ -529,21 +605,17 @@ $(document).on("keyup","input",function(){
         removeClass(f_utils.btn_warning);
         })
        
+	var u = f_function.url_get('url') ;
+	var p = f_function.url_get('f_for') ;
+	var s = f_function.url_get('par_url') ;
 
-    
-		var u = $_GET('url') ;
-		var p = $_GET('f_for') ;
-		var s = $_GET('par_url') ;
-	
-		if(u==null){
-		var u = "accueil"; 
-		controle_url(u,p,s); 
-			
-		}else{
-		controle_url(u,p,s); 
-			
-		}
-   
+	if(u==null){
+	var u = "accueil"; 
+	f_function.parametre_url(u,p,s); 
+	}else{
+	f_function.parametre_url(u,p,s); 
+	}
+
 	
 
 

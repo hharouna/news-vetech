@@ -4,7 +4,7 @@ require_once("../private/connexion.php");
 class f_af extends url{
 	 
 
-		public $f_af_image = '<div class=" shadow bg-dark   p-3 mb-5  rounded"><div class="row no-gutters bg-light position-relative">
+		public $f_af_image = '<div class=" shadow-sm bg-dark   p-3 mb-5  rounded"><div class="row no-gutters bg-light position-relative">
 		<div class="col-md-6 mb-md-0 p-md-4">
 		<img src="img_vetech/formation.jpg" class="w-100" alt="...">
 		</div>
@@ -42,13 +42,13 @@ $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC);
 	
 if($count_rs<=0){ 
     
-    $_contenu_module= '<div class=" shadow p-3 mb-2 bg-light rounded"><div class=" shadow-sm p-3 mb-5 bg-secondary rounded"><h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3></div>
+    $_contenu_module= '<div class=" shadow-sm p-3 mb-2 bg-light rounded"><div class=" shadow-sm p-3 mb-5 bg-secondary rounded"><h3 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h3></div>
     <div class=" shadow-sm p-3 mb-5 bg-warning rounded"><h3 class="text text-white text-center"> Aucun  contenu disponible maintenant !!! </h3></div></div>';
     return $_contenu_module;
     }
     else{
 	
-$_contenu_module= '<div class=" shadow  p-3 mb-5 bg-light rounded">';
+$_contenu_module= '<div class=" shadow-sm  p-3 mb-5 bg-light rounded">';
 $_contenu_module.= '<div class=" shadow-sm p-3 mb-5 bg-primary rounded"><h1 class="text text-white text-center"> Liste des chapitres:  '.$type_formation.'</h1></div>
     <div class="card-colum">';
  foreach($fetechall as $af_form => $rs_formation){
@@ -117,14 +117,14 @@ public function module($___db,$__array_db,$__exploide){
     $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC); 
 
   if($count_rs<=0){ 
-      $_contenu_calender= '<div class=" shadow p-3 mb-5 bg-light rounded">
+      $_contenu_calender= '<div class=" shadow-sm p-3 mb-5 bg-light rounded">
         <div class=" shadow-sm p-3 mb-5 bg-secondary text-center rounded"><h3 class="text text-white "> Liste des chapitres:  '.$type_formation.'</h3></div>
         <div class=" shadow-sm p-3 mb-5 bg-warning rounded"><h3 class="text text-white text-center"> Aucun  contenu disponible maintenant !!! </h3></div></div>';
         
         }else{
             
-			$_contenu_calender= '<div class=" shadow bg-secondary   p-3 mb-5  rounded">'; 
-			$_contenu_calender.='<div class="shadow p-3 mb-5 bg-light text text-center rounded "> <h4 class="text text-info ">Calendrier formation : '.$type_formation.'</h4></div>';
+			$_contenu_calender= '<div class=" shadow-sm bg-secondary   p-3 mb-5  rounded">'; 
+			$_contenu_calender.='<div class="shadow-sm p-3 mb-5 bg-light text text-center rounded "> <h4 class="text text-info ">Calendrier formation : '.$type_formation.'</h4></div>';
 	  
 			$_contenu_calender.= '<div class="card-columns">';
 			foreach($fetechall as $rs_calender =>$row_calander){
@@ -141,7 +141,7 @@ public function module($___db,$__array_db,$__exploide){
 			'.'.$row_calander['n_montant'];
 			$_contenu_calender.='
             
-			<div class="card shadow p-3 mb-5 border-success mb-3" >
+			<div class="card shadow-sm p-3 mb-5 border-success mb-3" >
 			<div class="card-header bg-transparent border-success">'.$row_calander['titre'].'</div>
 			<div class="card-body ">
 			<h5 class="card-title text text-center text-dark"> Information session </h5>

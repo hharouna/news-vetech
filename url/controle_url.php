@@ -31,7 +31,8 @@ $rs_connect = $u->u_connect($u_token, $session_info).$_all_module ->recherche($u
 $rs_pied_p_p = $u->piedpage(); // pieds de page
 $rs_erro_page = $u->erro_page();// message Erreur si la page ne function pas 
 
-$_module_all  = $_all_module->service_module($db,$_af_db);
+$_module_all  = $_all_module->annonce_module($db,$_af_db);
+$_module_all .= $_all_module->service_module($db,$_af_db);
 $_module_all .= $_all_module->module($db,$_af_db);
 
 $_db = $db; 

@@ -5,10 +5,10 @@ class f_af extends url{
     public function page($_db,$___array_db,$f__for_url,$__session_formation,$_token){
 
 		
-		$_formulaire_contact=' <div class=" shadow p-3 mb-3 bg-light rounded"> <div class="row"><div class="col-sm-7  mb-3"> 
+		$_formulaire_contact=' <div class=" shadow-sm p-3 mb-3 bg-light rounded"> <div class="row"><div class="col-sm-7  mb-3"> 
 		<div class="shadow-sm bg-secondary p-3 mb-3  rounded text text-center text-light" ><h4>Formulaire contact Vetech&design</h4>';
 			
-	   $_formulaire_contact.=	'</div><form id="form-contact" class="needs-validation shadow-sm bg-dark  p-3 mb-3  rounded text text-light" novalidate>
+	   $_formulaire_contact.= '</div><form id="form-contact" class="needs-validation shadow-sm bg-dark  p-3 mb-3  rounded text text-light" novalidate>
 		<div class="form-row">';
      if(empty($_SESSION['INFO_CONNECTER'])): 
 		   $_formulaire_contact.='<label for="validationCustom01">Nom</label>

@@ -12,7 +12,7 @@ $cat_fetechall =$cat_connect_db->fetchAll(PDO::FETCH_ASSOC);
 $_liste_cat =''; 
 	foreach($cat_fetechall as $rs_cat => $_cat){    
 	
-	$_liste_cat  .= '<option id_liste_cat="'.$this->base64encode($_cat['id_cathegorie']).'"></i> '.ucfirst(strtolower($_cat['nom_cathegorie'])).' </option> '; 
+	$_liste_cat  .= '<option id_liste_cat="'.$this->base64encode($_cat['id_cathegorie']).'" value="'.$this->base64encode($_cat['id_cathegorie']).'"></i> '.ucfirst(strtolower($_cat['nom_cathegorie'])).' </option> '; 
 	}
 	$_liste_cat .="";
 $sql_liste_region ='SELECT * FROM '.$_nom_bass['annonce'].'.region ';
@@ -22,11 +22,11 @@ $region_fetechall =$region_connect_db->fetchAll(PDO::FETCH_ASSOC);
 $_liste_region=''; 
 	foreach($region_fetechall as $rs_region => $_region){    
 	
-	$_liste_region.= '<option id_liste_region="'.$this->base64encode($_region['id_region']).'">'.ucfirst(strtolower($_region['nom_region'])).' </option> '; 
+	$_liste_region.= '<option id_liste_region="'.$this->base64encode($_region['id_region']).'" value="'.$this->base64encode($_region['id_region']).'">'.ucfirst(strtolower($_region['nom_region'])).' </option> '; 
 	}
 	$_liste_region.="";	
 $recherche= '	
-<div class=" shadow p-3 mb-3 bg-light rounded ">  
+<div class=" shadow-sm p-3 mb-3 bg-light rounded ">  
 <form class="form-annonce" id="form-annonce" accept-charset="UTF-8"> 
 <div class="bg-light shadow-sm rounded mr-1 mb-1 text text-center p-2 text-danger "> <h3> Déposer une annonce gratuite </h3></div>
 <div class="row p-3">
@@ -47,16 +47,16 @@ $recherche= '
 <select id="edit-cat" name="cat" class="form-control">
 <option value="0">-- Catégorie -- </option>'.$_liste_cat.'</select></div>
 <div class=" mr-1 mb-1 ">
-<select id="edit-typcat" name="type_cat" class="form-control">
+<select id="disabledSelect" name="type_cat" class="form-control edit-typcat">
 <option value="0">--Type cathegorie -- </option></select></div>
 <hr class="border border-light">
 <div class="  mr-1 mb-1">
 <select id="edit-lieu" name="ville" class="form-control input-sm">
-<option value="0">-- Région -- </option>'.$_liste_region.'</select>
+<option value="">-- Région -- </option>'.$_liste_region.'</select>
 </div>
 
 <div class="  mr-1 mb-1">
-<select  class="form-control input-sm mr-1 " id="edit-quartier" name="quartier"><option value="0">-- Quartier --</option></select>
+<select  class="form-control input-sm mr-1 edit-quartier" id="disabledSelect" name="quartier"><option value="">-- Quartier --</option></select>
 </div>
 <hr class="border border-light">
 <div class="  mr-1 mb-1 ">

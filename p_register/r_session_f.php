@@ -62,7 +62,7 @@ class f_af extends url {
 	
 	public function __identifiant_part($__db,$__array_db,$__exploide,$__session_value){
 
-	$_formuaire_part ='<div class=" shadow bg-dark  p-3 mb-5  rounded" > 
+	$_formuaire_part ='<div class=" shadow-sm bg-dark  p-3 mb-5  rounded" > 
 	<div class="row"> 
 	<div class="col-sm-6  mb-3">
 	<div class="card  p-3">
@@ -113,7 +113,7 @@ class f_af extends url {
         return $this->__identifiant_part($db,$_array_db,$_exploide,$_session_value); 
 		
 		elseif($count_exploide<10):  
-		 $Erreur =  "<div class='shadow p-3 mb-5 bg-warning rounded  text text-center '><h3>Problème de connexion à cette page merci de ressayer !!!</h3> </div>"; 
+		 $Erreur =  "<div class='shadow-sm p-3 mb-5 bg-warning rounded  text text-center '><h3>Problème de connexion à cette page merci de ressayer !!!</h3> </div>"; 
 		 return $Erreur;
 		 
 		 else :

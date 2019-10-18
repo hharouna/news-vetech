@@ -51,6 +51,13 @@ for($i=0; $i<$c_f; $i++){
 endif;
 }
 
+        if(!filter_var($email_annonce, FILTER_VALIDATE_EMAIL)): 
+        echo json_encode(array("code"=>"0","contenu"=>"Adresse E-mail incorrect !!!")); exit();  endif; 
+
+        if(!is_numeric($contact_annonce)): 
+       echo json_encode(array("code"=>"0", "contenu"=>"Votre numero est incorrect !!!")); exit(); endif; 
+		
+		   		
 
 if(isset($type)&&$type==1): 
 echo  json_encode(array("code"=>"0", "contenu"=>"Probleme de connexion!!!")); exit();

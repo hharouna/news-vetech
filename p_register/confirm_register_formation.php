@@ -97,7 +97,7 @@ class f_af extends url {
         if($date_j<=$resselectform['f_n_str']):
         
 
-	$_formuaire_part ='<div class=" shadow bg-primary p-3 mb-5  rounded" > 
+	$_formuaire_part ='<div class=" shadow-sm bg-primary p-3 mb-2 rounded" > 
 	<div class="row"> 
 	<div class="col-sm-6  mb-3">
 	<div class="card  p-3">
@@ -121,7 +121,7 @@ class f_af extends url {
 		return $_formuaire_part; 
 	elseif($date_j>$resselectform['f_n_str']&&$countselect!=0):
         $f_array=$resselectform['f_formation'].'-'.$resselectform['f_idforma'];
-        return '<div class=" shadow bg-primary p-3 mb-5  rounded" >
+        return '<div class=" shadow-sm bg-primary p-3 mb-5  rounded" >
         <div class=" shadow-sm bg-warning p-3 mb-5 text text-light rounded" > <h5>Excusez nous '.strtoupper($resselectform['f_nom']).'    '.strtoupper($resselectform['f_prenom']).' cette session est terminé, nous vous conseillons de consulter d\'autres sessions de Formation : <span class="text text-dark" >'.$resselectform['f_formation'].'</span> et du Chapitre : <span class="text text-dark"> '.$resselectform['f_chapitre'].'</span>  <a href="?url=formation&f_for='.$this->base64encode($f_array).'" class="btn btn-success"> Cliquez-ici </a></h4> </div></div>
         </div>';
             

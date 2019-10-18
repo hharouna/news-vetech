@@ -7,16 +7,16 @@ require_once('../function/form_all_connect.php');
 
 class f_af extends form_all_connect{
 	 
-	public $f_img = '<div class=" shadow bg-light  p-3 mb-3 rounded"> <img src="imgformation/vetechdesign.png" class="img-fluid img-thumbnail" alt="Responsive image"> </div>'; 
+	public $f_img = '<div class=" shadow-sm bg-light  p-3 mb-3 rounded"> <img src="imgformation/vetechdesign.png" class="img-fluid img-thumbnail" alt="Responsive image"> </div>'; 
 
-	public $f_affiche = '<div class=" shadow bg-dark   p-3 mb-3  rounded"> 
+	public $f_affiche = '<div class=" shadow-sm bg-dark   p-3 mb-3  rounded"> 
 
-<button type="button" class="btn btn-info shadow p-3 mb-3"  data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-folder-open fa-5x"></i></button>
-<button type="button" class="btn btn-light shadow p-3 mb-3"  data-toggle="tooltip" data-placement="top" title="Tooltip on top" ><i class="fas fa-building fa-5x"></i></button>
-<button type="button" class="btn btn-dark shadow p-3 mb-3"  data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-id-badge fa-5x"></i></button>
+<button type="button" class="btn btn-info shadow-sm p-3 mb-3"  data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-folder-open fa-5x"></i></button>
+<button type="button" class="btn btn-light shadow-sm p-3 mb-3"  data-toggle="tooltip" data-placement="top" title="Tooltip on top" ><i class="fas fa-building fa-5x"></i></button>
+<button type="button" class="btn btn-dark shadow-sm p-3 mb-3"  data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-id-badge fa-5x"></i></button>
 </div>';
 	
-	public $f_image = '<div class=" shadow p-3 mb-3 bg-light rounded">
+	public $f_image = '<div class=" shadow-sm p-3 mb-3 bg-light rounded">
 	<div class="row">
 	<div class="col-4 ">
 	<div id="list-example" class="list-group">

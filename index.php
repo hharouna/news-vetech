@@ -41,10 +41,10 @@ $_SESSION["token"]=$u_token;
 <script type="text/javascript" src="js/jquery.js"></script>
    
 <!--<script type="text/javascript" src="update_news/update/js/jquery.js"></script>-->
-<script type="text/javascript" src="fonts/js/all.js"></script> 
+<script type="text/javascript" src="fonts/js/all.js"></script>
 
  <script type="text/javascript" src="js/fotorama.dev.js"></script>
-<script type="text/javascript" src="bootstrap/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="bootstrap/bootstrap/js/bootstrap.js"></script> 
 <script type="text/javascript" src="js/jquery.uploadfile.js"></script>	
 <script type="text/javascript" src="js/script_vetechdesign.js"></script>
    <!-- Global site tag (gtag.js) - Google Analytics -->

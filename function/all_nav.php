@@ -37,7 +37,7 @@ class nav_all{
 	$_count = $connect_db->rowCount(); 
 	$nav_all =$connect_db->fetch(); 
         
-    $_formuaire_nav ='<div class=" shadow bg-transparent p-3 mb-3 rounded" > 
+    $_formuaire_nav ='<div class=" shadow-sm p-3 mb-3 rounded" > 
 	<div class="row  justify-content-md-center"> 
 	<div class="col-sm-8 ml-0 mr-0  mb-3">
 	<div class="card bg-transparen p-3">
