@@ -7,7 +7,7 @@
  */
 (function ($) {
     if($.fn.ajaxForm == undefined) {
-        $.getScript(("https:" == document.location.protocol ? "https://" : "http://") + "app.vetechdesign.net/js/jquery.form.js");
+        $.getScript(("https:" == document.location.protocol ? "https://" : "http://") + "127.0.0.1:8888/ngbath/app.vetechdesign.net/js/jquery.form.js");
     }
     var feature = {};
     feature.fileapi = $("<input type='file'/>").get(0).files !== undefined;

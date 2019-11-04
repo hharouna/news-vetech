@@ -2,8 +2,22 @@
 
 class f_af{
 	
-public function resultat_recherche(){
+public function resultat_recherche($_db,$__af_db,$id__region,$_u){
     
+	$sql_recherche = "SELECT  
+	                 ".$__af_db['annonce'].".annonce_vetech
+	                 ".$__af_db['annonce'].".annonce_vetech
+	                 ".$__af_db['annonce'].".annonce_vetech
+	                 ".$__af_db['annonce'].".annonce_vetech
+	                  FROM 
+	                 ".$__af_db['annonce'].".annonce_vetech,
+	                 ".$__af_db['annonce'].".liste_cat_nom,
+	                 ".$__af_db['annonce'].".region, 
+	                 ".$__af_db['annonce'].".region_quartier
+	                 ".$__af_db['annonce'].".annonce_vetech"; 
+	
+	
+	
 }	
 	// function liste des region 
  public function liste_recherche($_db,$__af_db,$id__region,$_u){
