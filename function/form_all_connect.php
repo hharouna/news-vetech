@@ -48,7 +48,7 @@ public function __identifiant_dessinateur($__db,$__array_db,$__exploide,$__sessi
 	
 public function liste_module_service($___db,$___array_db){
 		
-		$sql='SELECT *  FROM '.$___array_db['service'].'.listeformation ';
+		$sql='SELECT *  FROM '.$___array_db['annonce'].'.cathegorie ';
     
     $connect_db = $___db->prepare($sql);
     $connect_db->execute();
@@ -56,7 +56,7 @@ public function liste_module_service($___db,$___array_db){
     $fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC);
 	$_liste_option = "<option value=''>---Choix du services ---- </option> "; ; 
 	foreach($fetechall as $rs_option => $option){
-		$_liste_option.= "<option value='".$option["formation"]."'>".$option["formation"]." </option> "; 
+		$_liste_option.= "<option value='".$option["nom_cathegorie"]."'>".$option["nom_cathegorie"]." </option> "; 
 		
 	}
 	return $_liste_option; 

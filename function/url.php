@@ -207,7 +207,9 @@ return $nav_menu;
 
 public function liste_chapitre_service($_db,$_nom_bass,$id_cat,$s_service){
 	
-	$sql='SELECT * FROM '.$_nom_bass['annonce'].'.liste_cathegorie WHERE '.$_nom_bass['annonce'].'.liste_cathegorie.liste_cat_id=? ORDER BY '.$_nom_bass['annonce'].'.liste_cathegorie.id_liste_cat ASC';
+	$sql='SELECT * FROM '.$_nom_bass['annonce'].'.liste_cathegorie 
+	WHERE '.$_nom_bass['annonce'].'.liste_cathegorie.liste_cat_id=? 
+	ORDER BY '.$_nom_bass['annonce'].'.liste_cathegorie.id_liste_cat ASC';
 	$connect_db = $_db->prepare($sql);
 	$connect_db->execute(array($id_cat));
 	$fetechall =$connect_db->fetchAll(PDO::FETCH_ASSOC); 
